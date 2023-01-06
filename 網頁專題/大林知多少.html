@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+    <head>
+        <title>大林知多少</title>
+    </head>
+    <style>
+        
+        h3 {
+            font-size: 1.875rem;
+            font-weight: 300;
+            line-height: 2.4rem;
+            text-transform: uppercase;
+            word-spacing: -.15rem;
+        }
+
+        h3{
+            color: rgb(248, 4, 4);
+        }
+        figure.effect-lily{
+            opacity: 1;
+            position: relative;
+            max-width: 400px;
+            max-height: 300px;
+            margin: 1.5rem;
+            background-color: cornflowerblue;
+            overflow: hidden;
+            
+        }
+        figure img{
+            
+            opacity: 0;
+            transform: translate3d(-40px,0,0);
+            transition: transform .35s, opacity .35s;
+        }
+        figure.effect-lily:hover img {
+            opacity: 1;
+            transform: translate3d(0,0,0);
+        }
+        figure.effect-lily figcaption {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        figure.effect-lily .content {
+            width: 100%;
+            height: 50%;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        figure.effect-lily .content h3{
+            opacity: 1;
+           transform: translate3d(70px,-90px,0);
+            transition: transform .35s;
+        }
+        figure.effect-lily:hover .content h3{
+            opacity:0;
+           transform: translate3d(0,0,0);
+        }
+    </style>
+    <body>
+        <h1><b>大林知多少</b></h1>
+        <h2><b>歷史:</b></h2>  
+        <p>大林鎮舊名為「大莆林」、「大埔林」，此地名之由來有兩種說法，一種說法係指本地在開墾初期乃為廣大的森林地帶，故有此稱；另一種說法為往昔此地有來自潮州府大埔之林地的移民，而有此稱。後來才改為『大林』</p>
+        <h2><b>大林方位:</b></h2>
+            <p>
+                大林鎮（臺灣話：Tuā-nâ-tìn）位於臺灣嘉義縣北部，南接民雄鄉，西鄰溪口鄉，東鄰梅山鄉，北鄰雲林縣大埤鄉、斗南鎮、古坑鄉，面積約64平方公里，為嘉義縣北方的門戶及地方中心，主要吸引溪口及梅山兩鄉為主。
+            </p>
+        <h2><b>大林近況介紹:</b></h2>
+            <p>近年開始興建大埔美精密機械園區對於地方發展及人口成長，有相當大的影響。由於當地設有大林慈濟醫院提供醫療服務，鎮上平日流動人數比例逐漸成長，並與緊臨之嘉義都會區屬同一生活圈，鎮內往嘉義都會區內之通勤比例相當高。</p>
+            <figure class="effect-lily">
+                <img src="大林地標.jpg">
+                <figcaption>
+                    <div class="content">
+                        <h3><b>大林歡迎你！！</b></h3>
+                        
+                    </div>
+                </figcaption>
+            </figure>
+            
+            <br><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58496.80763841244!2d120.43732259690667!3d23.602522573458113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346ebeb71e0c2309%3A0x6a89b0a93dbe2f6f!2zNjIy5ZiJ576p57ij5aSn5p6X6Y6u5aSn5p6X!5e0!3m2!1szh-TW!2stw!4v1672837064000!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            
+    </body>     
+</html>

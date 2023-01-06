@@ -1,0 +1,699 @@
+<html>
+<head>
+    <!-- content type -->
+	<meta content="text/html; charset=gb2312" http-equiv="Content-Type">
+   
+    <!-- viewport -->
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+       
+    <!-- title -->
+    <title>jQuery多功能书本翻页特效</title>
+                
+    <!-- add css -->
+    <link type="text/css" href="css/style.css" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Play:400,700">
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nunito:400,300">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400&display=swap" rel="stylesheet">
+    
+    <!-- add js -->
+    <script src="js/jquery.js"></script>
+    <script src="js/turn.js"></script>              
+    <script src="js/jquery.address-1.6.min.js"></script>
+	<script src="js/onload.js"></script>
+    
+
+	<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+		overflow:auto !important;
+    }
+    </style> 
+    <script>
+		var xmlhttp;
+		function CreateXMLHttpRequest(url, statecheck)
+		{
+		  if (window.XMLHttpRequest)
+		  {// code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp=new XMLHttpRequest();
+		  }
+		  else
+		  {// code for IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		  xmlhttp.onreadystatechange=statecheck;
+		  xmlhttp.open("GET",url,true);
+		  xmlhttp.send();
+		}
+
+		function GetXMLValue()
+		{
+		  var weather, time, WeatherList="<span style='font-size: 28px;'>大林鎮</span><br>";
+		  CreateXMLHttpRequest("https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0001-001?Authorization=CWB-24D6E43E-BEFB-4E54-B43D-710682D0FB25&format=XML&stationId=C0M670&locationName=%E5%A4%A7%E6%9E%97&elementName=WDSD%2CTEMP%2CHUMD%2CH_24R%2CD_TX%2CD_TN&parameterName=TOWN&fbclid=IwAR3CiQvBHYOEZCc8v0PjZFC0bEOC00ytEzsnXt1fi61q_j68VKx7dqGp_5A", function()
+			{
+			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			  {
+				xmlDoc=xmlhttp.responseXML;
+				weather=xmlDoc.getElementsByTagName("elementValue");
+				time=xmlDoc.getElementsByTagName("obsTime");
+				if (parseInt(time[0].childNodes[0].nodeValue.substring(11, 13)) == 0){
+					WeatherList = WeatherList + "<span>上午12時</span>";
+				}else if (parseInt(time[0].childNodes[0].nodeValue.substring(11, 13)) < 12){
+					WeatherList = WeatherList + "<span>上午" + time[0].childNodes[0].nodeValue.substring(11, 13) + "時</span>";
+				}else{
+					WeatherList = WeatherList + "<span>下午" + time[0].childNodes[0].nodeValue.substring(11, 13) + "時</span>";
+				}
+				WeatherList = WeatherList + "&emsp;<span style='font-size: 28px;'><strong>" + weather[1].childNodes[0].nodeValue + "℃</strong></span><br><br>";
+				WeatherList = WeatherList + "<span>最高溫&nbsp;&nbsp;" + weather[4].childNodes[0].nodeValue.substring(0, 4) + "℃</span>";
+				WeatherList = WeatherList + "<span>&emsp;最低溫&nbsp;&nbsp;" + weather[5].childNodes[0].nodeValue.substring(0, 4) + "℃</span><br>";
+				WeatherList = WeatherList + "<span>風速&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + weather[0].childNodes[0].nodeValue + "m/s</span>";
+				WeatherList = WeatherList + "<span>&emsp;濕度&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + weather[2].childNodes[0].nodeValue + "%</span><br>";
+				WeatherList = WeatherList + "<span>今日累積雨量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + weather[3].childNodes[0].nodeValue + "毫米</span>";
+				document.getElementById('IdWeather').innerHTML=WeatherList;
+			  }
+			}
+		  );
+		}
+		
+		function MapChange(num){
+			if (num==1){
+				document.getElementById('informationMap').src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d6901.787004132169!2d120.45431490136511!3d23.60095770511807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z5aSn5p6X6Yar6Zmi!5e0!3m2!1szh-TW!2stw!4v1672931007045!5m2!1szh-TW!2stw";
+			}else{
+				document.getElementById('informationMap').src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d40768.17163108627!2d120.46419107939245!3d23.60991299768382!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z5aSn5p6X5rS-5Ye65omA!5e0!3m2!1szh-TW!2stw!4v1672932087160!5m2!1szh-TW!2stw";
+			}
+		}
+	</script>
+</head>
+ 
+<body style="background-image: url(table.jpg);" onload="GetXMLValue();">
+
+<div id="IdWeather" style="position: absolute; top: 5%; right: 1%; width: 35vh; height: 35vh; background-image: url(note.png); background-size: 100%; background-repeat: no-repeat; font-family: 'Noto Sans TC', sans-serif; line-height: 36px; text-align:center; transform:rotate(7deg);"></div>
+<div id="bookmark">
+    <p><a href="javascript:setPage(4)">大林．My Darlin</a></p>
+    <ol>
+        <li><a href="javascript:setPage(4)">大林知多少</a></li>
+        <li><a href="javascript:setPage(4)">慢城旅遊手冊</a></li>
+    </ol>
+    <p><a href="javascript:setPage(4)">網美走透透</a></p>
+    <ol>
+        <li><a href="javascript:setPage(4)">明華生態園區</a></li>
+        <li><a href="javascript:setPage(4)">大林小型賽車場</a></li>
+		<li><a href="javascript:setPage(4)">大林昭慶禪寺</a></li>
+		<li><a href="javascript:setPage(4)">大林車站站長宿舍</a></li>
+		<li><a href="javascript:setPage(4)">萬國戲院</a></li>
+		<li><a href="javascript:setPage(4)">63公園</a></li>
+		<li><a href="javascript:setPage(4)">拾粹院文創藝術園區</a></li>
+		<li><a href="javascript:setPage(4)">大林糖廠休閒園區</a></li>
+		<li><a href="javascript:setPage(4)">老楊方城市觀光工廠</a></li>
+		<li><a href="javascript:setPage(4)">佐登妮絲城堡生技園區</a></li>
+    </ol>
+	<p><a href="javascript:setPage(4)">品味．大林</a></p>
+    <ol>
+        <li><a href="javascript:setPage(4)">樂芙晨食</a></li>
+        <li><a href="javascript:setPage(4)">三輪車碳烤吐司</a></li>
+		<li><a href="javascript:setPage(4)">禾家早午餐</a></li>
+		<li><a href="javascript:setPage(4)">原天橋下火雞肉飯</a></li>
+		<li><a href="javascript:setPage(4)">大林火車站前臭豆腐</a></li>
+		<li><a href="javascript:setPage(4)">圓石優格飲</a></li>
+    </ol>
+	<p><a href="javascript:setPage(4)">附錄</a></p>
+    <ol>
+        <li><a href="javascript:setPage(10)">影音專區</a></li>
+		<li><a href="javascript:setPage(4)">相關資訊</a></li>
+    </ol>  
+</div>
+  
+  
+  
+<!-- BEGIN FLIPBOOK STRUCTURE -->   
+<div data-template="true" data-cat="book7" id="fb7-ajax">  
+  <div style="text-align:center;clear:both;">
+</div>
+
+         
+    <!-- BEGIN HTML BOOK -->     
+    <div data-current="book7" class="fb7" id="fb7">      
+    
+        <!-- preloader -->
+        <div class="fb7-preloader">
+            <div id="wBall_1" class="wBall">
+            <div class="wInnerBall">
+            </div>
+            </div>
+            <div id="wBall_2" class="wBall">
+            <div class="wInnerBall">
+            </div>
+            </div>
+            <div id="wBall_3" class="wBall">
+            <div class="wInnerBall">
+            </div>
+            </div>
+            <div id="wBall_4" class="wBall">
+            <div class="wInnerBall">
+            </div>
+            </div>
+            <div id="wBall_5" class="wBall">
+            <div class="wInnerBall">
+            </div>
+            </div>
+        </div>
+              
+        <!-- background for book -->  
+        <div class="fb7-bcg-book"></div>               
+      
+        <!-- BEGIN CONTAINER BOOK -->
+        <div id="fb7-container-book">
+     
+           <!-- BEGIN deep linking -->  
+           <section id="fb7-deeplinking">
+             <ul>
+                 <li data-address="page1" data-page="1"></li>
+                 <li data-address="page2-page3" data-page="2"></li>
+                 <li data-address="page2-page3" data-page="3"></li>
+                 <li data-address="page4-page5" data-page="4"></li>
+                 <li data-address="page4-page5" data-page="5"></li>
+                 <li data-address="page6-page7" data-page="6"></li>
+                 <li data-address="page6-page7" data-page="7"></li>
+                 <li data-address="page8-page9" data-page="8"></li>
+                 <li data-address="page8-page9" data-page="9"></li>
+                 <li data-address="end" data-page="10"></li>  
+             </ul>
+           </section>
+           <!-- END deep linking -->  
+        
+            
+            <!-- BEGIN PAGES -->
+            <div id="fb7-book">       
+
+                    <!-- BEGIN PAGE 1 -->          
+                    <div style="background-image:url(images/1t.png)" class="fb7-noshadow"></div>
+                    <!-- END PAGE 1 -->
+
+                    <!-- BEGIN PAGE 2 -->         
+                    <div style="background-image:url(images/3.png)"></div>
+                    <!-- END PAGE 2 -->
+                      
+                    
+                    <!-- BEGIN PAGE 3 -->          
+                    <div style="background-image:url(ContentBG.png)" >
+                         <!-- begin container page book -->
+                         <div class="fb7-cont-page-book">
+                                <!-- description for page--> 
+                                <div class="fb7-page-book">
+									<p style="font-family: 'Noto Sans TC', sans-serif; font-size: 48px;">目錄</p>
+                                    <h3 style="font-size: 36px;"><a href="javascript:setPage(4)">大林．My Darlin</a></h3>
+                                    <ol>
+                                    <li><a href="javascript:setPage(4)">大林知多少</a></li>
+                                    <li><a href="javascript:setPage(4)">慢城旅遊手冊</a></li>
+                                    </ol>
+									<br><br>
+                                    <h3 style="font-size: 36px;"><a href="javascript:setPage(4)">網美走透透</a></h3>
+                                    <ol>
+                                    <li><a href="javascript:setPage(4)">成為大自然的小妖精-明華生態園區</a></li>
+                                    <li><a href="javascript:setPage(4)">體驗老司機的快感-大林小型賽車場</a></li>
+									<li><a href="javascript:setPage(4)">沉浸宗教藝術之美-大林昭慶禪寺</a></li>
+									<li><a href="javascript:setPage(4)">日系美拍好去處-大林車站站長宿舍</a></li>
+									<li><a href="javascript:setPage(4)">走入歷史時光隧道-萬國戲院</a></li>
+									<li><a href="javascript:setPage(4)">融入在地生活-63公園</a></li>
+									<li><a href="javascript:setPage(4)">大型彩繪貨櫃-拾粹院文創藝術園區</a></li>
+									<li><a href="javascript:setPage(4)">藝術造景露營區-大林糖廠休閒園區</a></li>
+									<li><a href="javascript:setPage(4)">伴手禮必帶-老楊方城市觀光工廠</a></li>
+									<li><a href="javascript:setPage(4)">偽出國正夯！-佐登妮絲城堡生技園區</a></li>
+                                    </ol>  
+                                </div>                             
+                          </div> 
+                          <!-- end container page book -->   
+                    </div>
+                    <!-- END PAGE 3 -->
+                      
+                    
+                    <!-- BEGIN PAGE 4 -->           
+                    <div style="background-image:url(ContentBG.png)">
+                           
+                         <!-- begin container page book -->
+                         <div class="fb7-cont-page-book">
+                           
+                                <!-- description for page --> 
+                                <div class="fb7-page-book">
+                                    <h3 style="font-size: 36px;"><a href="javascript:setPage(4)">品味．大林</a></h3>
+                                    <ol>
+                                    <li><a href="javascript:setPage(4)">網美早午餐-樂芙晨食</a></li>
+                                    <li><a href="javascript:setPage(4)">平價小雀幸-三輪車碳烤吐司</a></li>
+									<li><a href="javascript:setPage(4)">健康新選擇-禾家早午餐</a></li>
+									<li><a href="javascript:setPage(4)">嘉義必吃雞肉飯-原天橋下火雞肉飯</a></li>
+									<li><a href="javascript:setPage(4)">排爆！超熱門！-大林火車站前臭豆腐</a></li>
+									<li><a href="javascript:setPage(4)">蹦出新滋味？-圓石優格飲</a></li>
+                                    </ol>
+									<br><br>
+									<h3 style="font-size: 36px;"><a href="javascript:setPage(4)">附錄</a></h3>
+                                    <ol>
+                                    <li><a href="javascript:setPage(4)">影音專區</a></li>
+									<li><a href="javascript:setPage(4)">相關資訊</a></li>
+                                    </ol>         
+                                </div>    
+                          </div> 
+                          <!-- end container page book --> 
+                    </div>
+					<!-- END PAGE 4 -->
+					
+                    <!-- BEGIN PAGE 5 --> 
+					<div style="background-image:url(images/TitleBG.png)">
+                           
+                         <!-- begin container page book --> 
+                         <div class="fb7-cont-page-book">
+                           
+                                <!-- description for page --> 
+                                <div class="fb7-page-book">
+									<p style="font-size: 56px; padding-top: 50%;">大林<br>My Darlin</p>
+                                </div> 
+								
+								<!-- begin number page  -->                
+                                <div class="fb7-meta">
+                                    
+                                        <span class="fb7-num">1</span>
+                                     
+                                </div>
+                                <!-- end number page  -->   
+                             
+                          </div> 
+                          <!-- end container page book -->
+                            
+                    </div>
+					<!-- END PAGE 5 -->
+					
+					<!-- BEGIN PAGE  --> 
+					<div style="background-image:url()">
+                           
+                         <!-- begin container page book --> 
+                         <div class="fb7-cont-page-book">
+                           
+                                <!-- description for page --> 
+                                <div class="fb7-page-book">
+									<iframe src="網頁專題/大林知多少.html" height="100%" width="100%"></iframe>
+                                </div> 
+								
+								<!-- begin number page  -->                
+                                <div class="fb7-meta">
+                                    
+                                        <span class="fb7-num">1</span>
+                                     
+                                </div>
+                                <!-- end number page  -->   
+                             
+                          </div> 
+                          <!-- end container page book -->
+                    </div>
+					<!-- END PAGE  -->
+					
+                    <!-- BEGIN PAGE  -->        
+                    <div style="background-image:url(images/slowCityBG.jpg)">
+                           
+                         <!-- begin container page book --> 
+                         <div class="fb7-cont-page-book">
+                           
+                                <!-- description for page --> 
+                                <div class="fb7-page-book">
+									<h3 style="font-size: 36px;">慢城旅遊手冊</h3>
+                                    <iframe src="慢城旅遊手冊.pdf" height="100%" width="100%"></iframe>
+                                </div> 
+								
+								<!-- begin number page  -->                
+                                <div class="fb7-meta">
+                                    
+                                        <span class="fb7-num">2</span>
+                                     
+                                </div>
+                                <!-- end number page  -->   
+                          </div> 
+                          <!-- end container page book -->
+                    </div>
+					<!-- END PAGE  -->
+					
+					<!-- BEGIN PAGE  --> 
+					<div style="background-image:url(images/TitleBG.png)">
+                           
+                         <!-- begin container page book --> 
+                         <div class="fb7-cont-page-book">
+                           
+                                <!-- description for page --> 
+                                <div class="fb7-page-book">
+									<p style="font-size: 56px; padding-top: 50%;"><br>網美走透透</p>
+                                </div> 
+								
+								<!-- begin number page  -->                
+                                <div class="fb7-meta">
+                                    
+                                        <span class="fb7-num">1</span>
+                                     
+                                </div>
+                                <!-- end number page  -->   
+                             
+                          </div> 
+                          <!-- end container page book -->
+                    </div>
+					<!-- END PAGE  -->
+					
+					<!-- BEGIN PAGE  --> 
+					<div style="background-image:url()">
+                           
+                         <!-- begin container page book --> 
+                         <div class="fb7-cont-page-book">
+                           
+                                <!-- description for page --> 
+                                <div class="fb7-page-book">
+									<iframe src="網美走透透/站長/站長.html" height="100%" width="100%"></iframe>
+                                </div> 
+								
+								<!-- begin number page  -->                
+                                <div class="fb7-meta">
+                                    
+                                        <span class="fb7-num">1</span>
+                                     
+                                </div>
+                                <!-- end number page  -->   
+                             
+                          </div> 
+                          <!-- end container page book -->
+                    </div>
+					<!-- END PAGE  -->
+					
+					<!-- BEGIN PAGE  --> 
+					<div style="background-image:url(images/萬國.png)">
+                           
+                         <!-- begin container page book --> 
+                         <div class="fb7-cont-page-book">
+                           
+                                <!-- description for page --> 
+                                <div class="fb7-page-book">
+
+                                </div> 
+								
+								<!-- begin number page  -->                
+                                <div class="fb7-meta">
+                                    
+                                        <span class="fb7-num">1</span>
+                                     
+                                </div>
+                                <!-- end number page  -->   
+                             
+                          </div> 
+                          <!-- end container page book -->
+                    </div>
+					<!-- END PAGE  -->
+					
+					<!-- BEGIN PAGE  --> 
+					<div style="background-image:url()">
+                           
+                         <!-- begin container page book --> 
+                         <div class="fb7-cont-page-book">
+                           
+                                <!-- description for page --> 
+                                <div class="fb7-page-book">
+									<iframe src="網美走透透/萬國/萬國.html" height="100%" width="100%"></iframe>
+                                </div> 
+								
+								<!-- begin number page  -->                
+                                <div class="fb7-meta">
+                                    
+                                        <span class="fb7-num">1</span>
+                                     
+                                </div>
+                                <!-- end number page  -->   
+                             
+                          </div> 
+                          <!-- end container page book -->
+                    </div>
+					<!-- END PAGE  -->
+					
+					<!-- BEGIN PAGE  --> 
+					<div style="background-image:url(images/63.png)">
+                           
+                         <!-- begin container page book --> 
+                         <div class="fb7-cont-page-book">
+                           
+                                <!-- description for page --> 
+                                <div class="fb7-page-book">
+								
+                                </div> 
+								
+								<!-- begin number page  -->                
+                                <div class="fb7-meta">
+                                    
+                                        <span class="fb7-num">1</span>
+                                     
+                                </div>
+                                <!-- end number page  -->   
+                             
+                          </div> 
+                          <!-- end container page book -->
+                    </div>
+					<!-- END PAGE  -->
+					
+					<!-- BEGIN PAGE  --> 
+					<div style="background-image:url()">
+                           
+                         <!-- begin container page book --> 
+                         <div class="fb7-cont-page-book">
+                           
+                                <!-- description for page --> 
+                                <div class="fb7-page-book">
+									<iframe src="網美走透透/63/63.html" height="100%" width="100%"></iframe>
+                                </div> 
+								
+								<!-- begin number page  -->                
+                                <div class="fb7-meta">
+                                    
+                                        <span class="fb7-num">1</span>
+                                     
+                                </div>
+                                <!-- end number page  -->   
+                             
+                          </div> 
+                          <!-- end container page book -->
+                    </div>
+					<!-- END PAGE  -->
+					
+					<!-- BEGIN PAGE  --> 
+					<div style="background-image:url(images/藝術.png)">
+                           
+                         <!-- begin container page book --> 
+                         <div class="fb7-cont-page-book">
+                           
+                                <!-- description for page --> 
+                                <div class="fb7-page-book">
+									
+                                </div> 
+								
+								<!-- begin number page  -->                
+                                <div class="fb7-meta">
+                                    
+                                        <span class="fb7-num">1</span>
+                                     
+                                </div>
+                                <!-- end number page  -->   
+                             
+                          </div> 
+                          <!-- end container page book -->
+                    </div>
+					<!-- END PAGE  -->
+					
+					<!-- BEGIN PAGE  --> 
+					<div style="background-image:url()">
+                           
+                         <!-- begin container page book --> 
+                         <div class="fb7-cont-page-book">
+                           
+                                <!-- description for page --> 
+                                <div class="fb7-page-book">
+									<iframe src="網美走透透/藝術園區/藝術.html" height="100%" width="100%"></iframe>
+                                </div> 
+								
+								<!-- begin number page  -->                
+                                <div class="fb7-meta">
+                                    
+                                        <span class="fb7-num">1</span>
+                                     
+                                </div>
+                                <!-- end number page  -->   
+                             
+                          </div> 
+                          <!-- end container page book -->
+                    </div>
+					<!-- END PAGE  -->
+					
+					<!-- BEGIN PAGE  --> 
+					<div style="background-image:url(images/TitleBG.png)">
+                           
+                         <!-- begin container page book --> 
+                         <div class="fb7-cont-page-book">
+                           
+                                <!-- description for page --> 
+                                <div class="fb7-page-book">
+									<p style="font-size: 56px; padding-top: 50%;"><br>品味．大林</p>
+                                </div> 
+								
+								<!-- begin number page  -->                
+                                <div class="fb7-meta">
+                                    
+                                        <span class="fb7-num">1</span>
+                                     
+                                </div>
+                                <!-- end number page  -->   
+                             
+                          </div> 
+                          <!-- end container page book -->
+                    </div>
+					<!-- END PAGE  -->
+					
+					<!-- BEGIN PAGE  --> 
+					<div style="background-image:url(images/food1.png)">
+                           
+                         <!-- begin container page book --> 
+                         <div class="fb7-cont-page-book">
+                           
+                                <!-- description for page --> 
+                                <div class="fb7-page-book">
+
+                                </div> 
+								
+								<!-- begin number page  -->                
+                                <div class="fb7-meta">
+                                    
+                                        <span class="fb7-num">1</span>
+                                     
+                                </div>
+                                <!-- end number page  -->   
+                             
+                          </div> 
+                          <!-- end container page book -->
+                    </div>
+					<!-- END PAGE  -->
+					
+					<!-- BEGIN PAGE  --> 
+					<div style="background-image:url(images/TitleBG.png)">
+                           
+                         <!-- begin container page book --> 
+                         <div class="fb7-cont-page-book">
+                           
+                                <!-- description for page --> 
+                                <div class="fb7-page-book">
+									<p style="font-size: 56px; padding-top: 50%;">附錄</p>
+                                </div> 
+								
+								<!-- begin number page  -->                
+                                <div class="fb7-meta">
+                                    
+                                        <span class="fb7-num">1</span>
+                                     
+                                </div>
+                                <!-- end number page  -->   
+                             
+                          </div> 
+                          <!-- end container page book -->
+                    </div>
+					<!-- END PAGE  -->
+					
+					<!-- BEGIN PAGE  -->        
+                    <div style="background-image:url(images/slowCityBG.jpg)">
+                           
+                         <!-- begin container page book --> 
+                         <div class="fb7-cont-page-book">
+                           
+                                <!-- description for page --> 
+                                <div class="fb7-page-book">
+									<h3 style="font-size: 36px;">影音專區</h3>
+									<a href="https://www.youtube.com/watch?v=ASmo03v6XvQ" target="_blank" style="position: absolute; z-index: 999; left: 30%; top: 35%; width: 40%; height: 20%;"></a>
+                                    <img src="images/videoFrame.png" style="position: absolute; width: 100%; height: 90%;">
+									<img src="images/play.png" style="position: absolute; left: 25%; top: 30%; width: 50%; height: 30%;">
+                                </div> 
+								
+								<!-- begin number page  -->                
+                                <div class="fb7-meta">
+                                    
+                                        <span class="fb7-num">2</span>
+                                     
+                                </div>
+                                <!-- end number page  -->   
+                          </div> 
+                          <!-- end container page book -->
+                    </div>
+					<!-- END PAGE  -->
+
+					<!-- BEGIN PAGE  -->        
+                    <div style="background-image:url(images/slowCityBG.jpg)">
+                           
+                         <!-- begin container page book --> 
+                         <div class="fb7-cont-page-book">
+                           
+                                <!-- description for page --> 
+                                <div class="fb7-page-book">
+									<h3 style="font-size: 36px;">相關資訊</h3>
+									<div class="information" style="background-image:url(images/Tag1.png)"><a href="https://dalin.cyhg.gov.tw/Default.aspx" target="_blank">大林鎮公所</a></div>
+                                    <div class="information" style="background-image:url(images/Tag2.png)" onclick="MapChange(1)">醫院&診所</div>
+									<div class="information" style="background-image:url(images/Tag3.png)" onclick="MapChange(2)">大林警察局</div>
+									<iframe id="informationMap" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d6901.787004132169!2d120.45431490136511!3d23.60095770511807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z5aSn5p6X6Yar6Zmi!5e0!3m2!1szh-TW!2stw!4v1672931007045!5m2!1szh-TW!2stw" width="450" height="350" style="border:0; margin-left: 25; margin-top: 50;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+								</div> 
+								
+								<!-- begin number page  -->                
+                                <div class="fb7-meta">
+                                    
+                                        <span class="fb7-num">2</span>
+                                     
+                                </div>
+                                <!-- end number page  -->   
+                          </div> 
+                          <!-- end container page book -->
+                    </div>
+					<!-- END PAGE  -->
+
+                    <!-- BEGIN PAGE 10 -->          
+                    <div style="background-image:url(images/backCover.png)">
+                           
+                         <!-- begin container page book --> 
+                         <div class="fb7-cont-page-book">
+                           
+                                <!-- description for page--> 
+                                <div class="fb7-page-book">
+                    
+                                </div> 
+                                    
+                         </div>
+                         <!-- end container page book -->
+                            
+                    </div>
+                    <!-- END PAGE 10 -->
+                                  
+           
+            
+            </div>
+            <!-- END PAGES -->
+                    
+            <!-- shadow -->
+            <div class="fb7-shadow"></div>
+    
+        </div>
+        <!-- END CONTAINER BOOK -->
+
+   </div>
+    <!-- END HTML BOOK -->    
+    
+    
+</div>
+<!-- END FLIPBOOK STRUCTURE --> 
+
+
+<!-- CONFIGURATION FLIPBOOK -->    
+<script>
+jQuery('#fb7-ajax').data('config',
+    {
+		"page_width":"640",
+		"page_height":"920",
+		"rtl":"false"
+     })
+</script>
+
+
+</body>
+</html>
