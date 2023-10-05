@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	<title></title>
+
+	<style>
+
+		body{
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			height: 100vh;
+			width: 100vw;
+		}
+
+		.warp{
+			display: flex;
+			height: 100vh;
+			width: 100vw;
+			overflow: hidden;
+			background-image: url("bg.jpg");
+			background-repeat:no-repeat;
+			background-position: center;
+			background-size: 100% 100%;
+		}
+
+		.intro{
+			display: flex;
+			flex-direction: column;
+			padding: 20px;
+			padding-bottom: 0px;
+			box-sizing: border-box;
+			justify-content: flex-end;
+		}
+
+		.frame{
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			height: 100%;
+			background-image: url("billboard.png");
+			background-repeat:no-repeat;
+			background-position: bottom;
+			background-size: 100% 80%;
+			justify-content: flex-end;
+		}
+
+		.introContainer{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			width: 85%;
+			height: 30%;
+			background-color:  rgba(,255,255,255,0.6);
+			border-radius: 20px;
+			align-self: center;
+		}
+
+		h2{
+			margin: 10px;
+			letter-spacing: 1px;
+  			line-height: 1.7;
+  			box-sizing: border-box;
+  			color: #0F4C3A;
+		}
+
+		.container{
+			display: flex;
+			width: 100%;
+			height: 40%;
+			justify-content: flex-start;
+			align-items: center;
+			margin-top: 8%;
+		}
+
+		iframe{
+			border-radius: 10px;
+			box-shadow: 1px 1px 3px -2px;
+		}
+
+	</style>
+
+</head>
+<body>
+	<div class="intro warp">
+		<div class="frame">
+			<div class="introContainer">
+				<h2>63公園是大林的秘密景點，隱藏在樓房間的巷弄，兩旁的圍牆就像是畫板一樣，被填上了豐富的彩繪，曾是社區髒亂廢棄點的空地，如今已成為美麗的63公園。</h2>
+				<h2>在隱藏於匆忙城市中的63公園裡轉個彎，換個好心情!</h2>
+			</div>
+		
+			<div class="container">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.075182271934!2d120.45217981497865!3d23.60163648466293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346ebeb9dd63e6c9%3A0x43ef9ae244201dec!2s63%20Park!5e0!3m2!1sen!2stw!4v1672743426053!5m2!1sen!2stw" width="50%" height="60%" style="border:burlywood 4px solid;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

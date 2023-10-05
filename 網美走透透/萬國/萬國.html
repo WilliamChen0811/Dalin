@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	<title></title>
+
+	<style>
+
+		body{
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			height: 100vh;
+			width: 100vw;
+		}
+
+		.warp{
+			display: flex;
+			height: 100vh;
+			width: 100vw;
+			overflow: hidden;
+			align-items: center;
+		}
+
+		.intro{
+			display: flex;
+			flex-direction: column;
+			box-sizing: border-box;
+		}
+
+		.introContainer{
+			width: 100%;
+			height: 60%;
+			background-image: url("projector.png");
+			background-repeat:no-repeat;
+			background-position: center;
+			background-size: 100% 100%;
+			align-items: center;
+			margin-top: 5%;
+		}
+
+		h1{
+			font-size: 25px;
+			margin: 20px;
+			color: #867835;
+		}
+
+		h2{
+			margin: 20px;
+			letter-spacing: 1px;
+  			line-height: 1.7;
+  			padding-left: 5%;
+  			padding-right: 5%;
+  			box-sizing: border-box;
+		}
+
+		.container{
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			height: 20%;
+			margin-top: 5%;
+			justify-content: center;
+		}
+
+		.fb{
+			margin-left: 40%;
+			position: absolute;
+			bottom: 20%;
+		}
+		.map{
+			align-self: center;
+			border-radius: 10px;
+			box-shadow: 1px 1px 3px -2px;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="intro warp">
+		<h1>走入歷史時光隧道-萬國戲院</h1>
+		<div class="introContainer">
+			<h2>萬國戲院於1977年開業，是當時鎮上重要的娛樂設施，然而隨著產業沒落及人口外移，逐漸沒落。在經歷改建後，目前萬國戲院會舉辦文藝活動、邀請資深藝人舉行表演以及撥放懷舊電影。戲院的造型以及撥放的電影，滿滿的懷舊風格讓人感覺像是回到了民國70年代。</h2>
+			<h2>如果對萬國戲院舉辦的活動有興趣的話，可以透過facebook的粉專獲取最新資訊!</h2>
+			<iframe class="fb" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fiwccinemas%2F&width=280&height=200&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="280" height="200" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+		</div>
+		
+		<div class="container">
+			<iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.05372246427!2d120.45386871497853!3d23.602406184662577!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a9094012b4ef%3A0xc7afe8ccce3b6233!2z6JCs5ZyL5oiy6Zmi!5e0!3m2!1sen!2stw!4v1672744313634!5m2!1sen!2stw" width="280" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		</div>
+	</div>
+</div>
+</body>
+</html>

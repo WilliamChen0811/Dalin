@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #FFECF5;
+			margin: 0;
+        }
+        .top h1 {
+            display: flex;
+            justify-content: center;
+        }
+        .slider_container {
+            margin: 30px auto;
+            width: 80vw;
+            height: 30vh;
+            position: relative;
+            border: 20px solid;    
+            border-color: #fff;
+            background-color: #f5f5f5;
+            box-shadow: #666 0 0 5px;
+        }
+        .slider_container img{
+            width: 80vw;
+            height: 30vh;
+        }
+        .slider_container span{
+            font-size: 12px;
+        }
+        .slider_container div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+        .slider_container div {
+            -webkit-animation: round 25s linear infinite;
+                    animation: round 25s linear infinite;
+        }
+        .slider_container div p{
+            position: relative;
+            top: 10px;
+			font-size: 20px;
+        }
+        @-webkit-keyframes round {
+            4% {
+                opacity: 1;
+                filter: alpha(opacity=100);
+                /* 0 - 1秒 淡入*/
+            }
+            20% {
+                opacity: 1;
+                filter: alpha(opacity=100);
+                /* 1- 5秒靜止*/
+            }
+            24% {
+                opacity: 0;
+                filter: alpha(opacity=0);
+                /* 5-6秒淡出*/
+            }
+        }
+        @keyframes round {
+            4% {
+                opacity: 1;
+                filter: alpha(opacity=100);
+                /* 0 - 1秒 淡入*/
+            }
+            20% {
+                opacity: 1;
+                filter: alpha(opacity=100);
+                /* 1- 5秒靜止*/
+            }
+            24% {
+                opacity: 0;
+                filter: alpha(opacity=0);
+                /* 5-6秒淡出*/
+            }
+        }
+        .slider_container div:nth-child(5) {
+            -webkit-animation-delay: 0s;
+                    animation-delay: 0s;
+        }
+
+        .slider_container div:nth-child(4) {
+            -webkit-animation-delay: 5s;
+                    animation-delay: 5s;
+        }
+
+        .slider_container div:nth-child(3) {
+            -webkit-animation-delay: 10s;
+                    animation-delay: 10s;
+        }
+
+        .slider_container div:nth-child(2) {
+            -webkit-animation-delay: 15s;
+                    animation-delay: 15s;
+        }
+
+        .slider_container div:nth-child(1) {
+            -webkit-animation-delay: 20s;
+                    animation-delay: 20s;
+        }
+        .wordcontent{
+            display: flex;
+            width: auto;
+            height: 90px;
+            margin: auto;
+            justify-content: center;
+        }
+        .ticket{
+            display: flex;
+            width: auto;
+            height: 20vh;
+            margin-top:6vh;
+            justify-content: center;
+        }
+        .ticket img{
+            height: 20vh;
+            border-radius: 10px;
+            border: 3px solid rgb(139, 136, 136);
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <h1>佐登妮絲城堡生技園區</h1>
+    </div>
+    <div class="slider_container">
+        <div>
+            <img src="house.jpg" alt="" />
+            <span class="info">城堡</span>
+            <p>提到城堡，臺灣人的印象應該都是在電影或是雜誌中那些外觀漂亮，奢華中又富含歷史氣息
+                的歐洲建築，這些如迪士尼電影畫面中的景色現在也可以在大林看到啦!</p>
+        </div>
+        <div>
+            <img src="garden.jpg" alt="" />
+            <span class="info">歐洲花園</span>
+            <p>剛進入園區就可以馬上看到你是城堡外超級大的歐洲花園，街道上還有復古風的路燈以及長椅做點綴
+                ，馬上就可以感受到身在國外的感覺，花朵以及景色也非常適合拿來拍照哦!</p>
+        </div>
+        <div>
+            <img src="fountain.jpg" alt="" />
+            <span class="info">琦琦公主噴泉</span>
+            <p>在庭院的正中央就是園區內最有名的琦琦公主噴泉，跟附近庭院的景色搭配真的有種浪漫的感覺呢!
+                順道說一下，噴水池裡面的每位雕像都長的不一樣，古銅色的材質也顯得非常有質感。
+                </p>
+        </div>
+        <div>
+            <img src="house1.jpg" alt="" />
+            <span class="info">佐登妮絲城堡</span>
+            <p>逛完歐式庭院之後，旁邊映入眼簾的就是佐登妮絲城堡了。
+                佐登妮絲城堡是以文藝復興時期的巴洛克風格設計的，裡面除了皇宮般的裝潢外也有許多藝術展覽以及佐登妮絲自己的美容產品可以逛。
+                </p>
+        </div>
+        <div>
+            <img src="car.jpg" alt="" />
+            <span class="info">勞斯萊斯</span>
+            <p>皇宮的一樓更是直接停放了一輛復古風的勞斯萊斯，聽說跟英國女皇伊莉莎白二世的禮賓車是同一款的
+                ，為皇宮般的裝潢又增添了一點風采。</p>
+        </div>
+        
+    </div>
+    <div class="wordcontent">
+
+    </div>
+    <div class="ticket">
+        <img src="price.jpg" alt="">
+        <img src="ticket.jpg" alt="">
+    </div>
+</body>
+</html>
