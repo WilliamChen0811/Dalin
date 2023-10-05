@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+    <head>
+        <meta charset="utf-8">
+        <title>慢城大林</title>
+        <meta name="description" content="測試用">
+		<link rel="icon" type="image/png" href="images/icon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		
+    <!-- CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+		<style>
+			body {
+				overflow-y: hidden;
+				overflow-x: hidden;
+				background-color: black;
+			}
+			
+			.cover {
+				position: absolute;
+				width: 100vw;
+				height: 100vh;
+			}
+			
+			.BG {
+				position: absolute;
+				background-image: url(images/0.png);
+				background-size: 100% 100%;
+				width: 100%;
+				height: 80%;
+				opacity: 100%;
+				animation: ChangeOpacity 3s linear infinite alternate;
+			}
+			
+			@keyframes ChangeOpacity {
+				0% {opacity: 0%;}
+				25% {opacity: 100%;}
+				100% {opacity: 100%;}
+			}
+			
+			.road {
+				position: absolute;
+				background-image: url(images/road.jpg);
+				background-size: 10vw 100%;
+				background-position: 0vw;
+				background-repeat: repeat;
+				width: 100%;
+				height: 20%;
+				top: 80%;
+				animation: roadRun 1s linear infinite reverse;
+			}
+			
+			@keyframes roadRun {
+				0% {background-position: 0vw;}
+				25% {background-position: 2.5vw;}
+				50% {background-position: 5vw;}
+				75% {background-position: 7.5vw;}
+				100% {background-position: 10vw;}
+			}
+			
+			.fence {
+				position: absolute;
+				background-image: url(images/fence.png);
+				background-size: 10vw 100%;
+				background-position: 0vw;
+				background-repeat: repeat;
+				width: 100%;
+				height: 23%;
+				top: 64.5%;
+				animation: roadRun 1s linear infinite reverse;
+			}
+			
+			.bike {
+				position: absolute;
+				background-image: url(images/bike.gif);
+				background-size: 100% 100%;
+				width: 45%;
+				height: 40%;
+				top: 57.5%;
+				left: 27.5%;
+			}
+			
+			.white {
+				position: absolute;
+				background-color: white;
+				width: 0.8%;
+				height: 2.8%;
+				transform: rotate(25deg);
+				top: 65.8%;
+				left: 52.75%;
+				visibility: hidden;
+				box-shadow: 0 0 10px 5px #FFD300;
+			}
+			
+			@keyframes zoomIn {
+				0% {}
+				20% {transform: scale(1);}
+				100% {transform: scale(200);}
+			}
+			
+			iframe {
+				visibility: hidden;
+				position: absolute;
+				width: 100vw;
+				height: 100vh;
+				opacity: 0%;
+			}
+		</style>
+    </head>
+
+    <body onclick="WebStart()">
+		<div class="cover" id="cover">
+			<div class="BG" id="BG"></div>
+			<div class="road"></div>
+			<div class="fence"></div>
+			<div class="bike"></div>
+			<div class="white" id="white"></div>
+		</div>
+		<iframe src="index2.html" id="book"></iframe>
+		
+		<script>
+			var BGCount = 1;
+            function changeBackgroundImage() {
+				const BG = document.getElementById('BG');
+				BG.style.backgroundImage = "url('images/" + BGCount + ".png')";
+				BGCount = ((BGCount + 1) % 7);
+			}
+			window.setInterval("changeBackgroundImage()", "6000");
+			
+			function WebStart() {
+				const white = document.getElementById('white');
+				white.style.visibility = "visible";
+				white.style.animation = "zoomIn 5s linear forwards";
+				window.setTimeout("ShowBook()", "5000");
+			}
+			
+			function ShowBook() {
+				const book = document.getElementById('book');
+				book.style.visibility = "visible";
+				book.style.animation = "ChangeOpacity 3s linear 1 forwards";
+			}
+		</script>
+    </body>
+</html>
