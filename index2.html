@@ -7,7 +7,7 @@
     <meta content="width=device-width,initial-scale=1" name="viewport">
        
     <!-- title -->
-    <title>���Ǵ���</title>
+    <title>慢城大林</title>
                 
     <!-- add css -->
     <link type="text/css" href="css/style.css" rel="stylesheet">
@@ -50,7 +50,7 @@
 
 		function GetXMLValue()
 		{
-		  var weather, time, WeatherList="<span style='font-size: 28px;'>�����</span><br>";
+		  var weather, time, WeatherList="<span style='font-size: 28px;'>大林鎮</span><br>";
 		  CreateXMLHttpRequest("https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0001-001?Authorization=CWB-24D6E43E-BEFB-4E54-B43D-710682D0FB25&format=XML&stationId=C0M670&locationName=%E5%A4%A7%E6%9E%97&elementName=WDSD%2CTEMP%2CHUMD%2CH_24R%2CD_TX%2CD_TN&parameterName=TOWN&fbclid=IwAR3CiQvBHYOEZCc8v0PjZFC0bEOC00ytEzsnXt1fi61q_j68VKx7dqGp_5A", function()
 			{
 			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
@@ -59,18 +59,18 @@
 				weather=xmlDoc.getElementsByTagName("elementValue");
 				time=xmlDoc.getElementsByTagName("obsTime");
 				if (parseInt(time[0].childNodes[0].nodeValue.substring(11, 13)) == 0){
-					WeatherList = WeatherList + "<span>����12�r</span>";
+					WeatherList = WeatherList + "<span>上午12時</span>";
 				}else if (parseInt(time[0].childNodes[0].nodeValue.substring(11, 13)) < 12){
-					WeatherList = WeatherList + "<span>����" + time[0].childNodes[0].nodeValue.substring(11, 13) + "�r</span>";
+					WeatherList = WeatherList + "<span>上午" + time[0].childNodes[0].nodeValue.substring(11, 13) + "時</span>";
 				}else{
-					WeatherList = WeatherList + "<span>����" + time[0].childNodes[0].nodeValue.substring(11, 13) + "�r</span>";
+					WeatherList = WeatherList + "<span>下午" + time[0].childNodes[0].nodeValue.substring(11, 13) + "時</span>";
 				}
-				WeatherList = WeatherList + "&emsp;<span style='font-size: 28px;'><strong>" + weather[1].childNodes[0].nodeValue + "��</strong></span><br><br>";
-				WeatherList = WeatherList + "<span>��ߜ�&nbsp;&nbsp;" + weather[4].childNodes[0].nodeValue.substring(0, 4) + "��</span>";
-				WeatherList = WeatherList + "<span>&emsp;��͜�&nbsp;&nbsp;" + weather[5].childNodes[0].nodeValue.substring(0, 4) + "��</span><br>";
-				WeatherList = WeatherList + "<span>�L��&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + weather[0].childNodes[0].nodeValue + "m/s</span>";
-				WeatherList = WeatherList + "<span>&emsp;���&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + weather[2].childNodes[0].nodeValue + "%</span><br>";
-				WeatherList = WeatherList + "<span>�����۷e����&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + weather[3].childNodes[0].nodeValue + "����</span>";
+				WeatherList = WeatherList + "&emsp;<span style='font-size: 28px;'><strong>" + weather[1].childNodes[0].nodeValue + "℃</strong></span><br><br>";
+				WeatherList = WeatherList + "<span>最高溫&nbsp;&nbsp;" + weather[4].childNodes[0].nodeValue.substring(0, 4) + "℃</span>";
+				WeatherList = WeatherList + "<span>&emsp;最低溫&nbsp;&nbsp;" + weather[5].childNodes[0].nodeValue.substring(0, 4) + "℃</span><br>";
+				WeatherList = WeatherList + "<span>風速&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + weather[0].childNodes[0].nodeValue + "m/s</span>";
+				WeatherList = WeatherList + "<span>&emsp;濕度&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + weather[2].childNodes[0].nodeValue + "%</span><br>";
+				WeatherList = WeatherList + "<span>今日累積雨量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + weather[3].childNodes[0].nodeValue + "毫米</span>";
 				document.getElementById('IdWeather').innerHTML=WeatherList;
 			  }
 			}
@@ -96,37 +96,37 @@
 <img src="images/snails2.png" id="randomGirl" style="position: absolute; height: 30vh; width: auto; bottom: 3%; right: 1%; z-index: 999;" onclick="RandomPage()">
 <div id="IdWeather" style="position: absolute; top: 5%; right: 1%; width: 35vh; height: 35vh; background-image: url(images/note.png); background-size: 100%; background-repeat: no-repeat; font-family: 'Noto Sans TC', sans-serif; line-height: 36px; text-align:center; transform:rotate(7deg);"></div>
 <div id="bookmark">
-    <p><a href="javascript:setPage(5)">���֣�My Darlin</a></p>
+    <p><a href="javascript:setPage(5)">大林．My Darlin</a></p>
     <ol>
-        <li><a href="javascript:setPage(6)">����֪����</a></li>
-        <li><a href="javascript:setPage(7)">�������[�փ�</a></li>
+        <li><a href="javascript:setPage(6)">大林知多少</a></li>
+        <li><a href="javascript:setPage(7)">慢城旅遊手冊</a></li>
     </ol>
-    <p><a href="javascript:setPage(8)">�W����͸͸</a></p>
+    <p><a href="javascript:setPage(8)">網美走透透</a></p>
     <ol>
-        <li><a href="javascript:setPage(11)">���A���B�@�^</a></li>
-        <li><a href="javascript:setPage(13)">����С��ِ܇��</a></li>
-		<li><a href="javascript:setPage(15)">�����ёc�U��</a></li>
-		<li><a href="javascript:setPage(17)">����܇վվ�L����</a></li>
-		<li><a href="javascript:setPage(18)">�f����Ժ</a></li>
-		<li><a href="javascript:setPage(21)">63���@</a></li>
-		<li><a href="javascript:setPage(22)">ʰ��Ժ�Ą�ˇ�g�@�^</a></li>
-		<li><a href="javascript:setPage(25)">�����ǏS���f�@�^</a></li>
-		<li><a href="javascript:setPage(27)">�ϗ�����^�⹤�S</a></li>
-		<li><a href="javascript:setPage(28)">�����ݽz�Ǳ������@�^</a></li>
+        <li><a href="javascript:setPage(11)">明華生態園區</a></li>
+        <li><a href="javascript:setPage(13)">大林小型賽車場</a></li>
+		<li><a href="javascript:setPage(15)">大林昭慶禪寺</a></li>
+		<li><a href="javascript:setPage(17)">大林車站站長宿舍</a></li>
+		<li><a href="javascript:setPage(18)">萬國戲院</a></li>
+		<li><a href="javascript:setPage(21)">63公園</a></li>
+		<li><a href="javascript:setPage(22)">拾粹院文創藝術園區</a></li>
+		<li><a href="javascript:setPage(25)">大林糖廠休閒園區</a></li>
+		<li><a href="javascript:setPage(27)">老楊方城市觀光工廠</a></li>
+		<li><a href="javascript:setPage(28)">佐登妮絲城堡生技園區</a></li>
     </ol>
-	<p><a href="javascript:setPage(29)">Ʒζ������</a></p>
+	<p><a href="javascript:setPage(29)">品味．大林</a></p>
     <ol>
-        <li><a href="javascript:setPage(30)">��ܽ��ʳ</a></li>
-        <li><a href="javascript:setPage(33)">��݆܇̼����˾</a></li>
-		<li><a href="javascript:setPage(36)">�̼������</a></li>
-		<li><a href="javascript:setPage(39)">ԭ����»��u���</a></li>
-		<li><a href="javascript:setPage(42)">���ֻ�܇վǰ������</a></li>
-		<li><a href="javascript:setPage(45)">�Aʯ�����</a></li>
+        <li><a href="javascript:setPage(30)">樂芙晨食</a></li>
+        <li><a href="javascript:setPage(33)">三輪車碳烤吐司</a></li>
+		<li><a href="javascript:setPage(36)">禾家早午餐</a></li>
+		<li><a href="javascript:setPage(39)">原天橋下火雞肉飯</a></li>
+		<li><a href="javascript:setPage(42)">大林火車站前臭豆腐</a></li>
+		<li><a href="javascript:setPage(45)">圓石優格飲</a></li>
     </ol>
-	<p><a href="javascript:setPage(48)">���</a></p>
+	<p><a href="javascript:setPage(48)">附錄</a></p>
     <ol>
-        <li><a href="javascript:setPage(49)">Ӱ�􌣅^</a></li>
-		<li><a href="javascript:setPage(50)">���P�YӍ</a></li>
+        <li><a href="javascript:setPage(49)">影音專區</a></li>
+		<li><a href="javascript:setPage(50)">相關資訊</a></li>
     </ol>  
 </div>
   
@@ -249,25 +249,25 @@
                          <div class="fb7-cont-page-book">
                                 <!-- description for page--> 
                                 <div class="fb7-page-book">
-									<p style="font-family: 'Noto Sans TC', sans-serif; font-size: 48px;">Ŀ�</p>
-                                    <h3 style="font-size: 36px;"><a href="javascript:setPage(5)">���֣�My Darlin</a></h3>
+									<p style="font-family: 'Noto Sans TC', sans-serif; font-size: 48px;">目錄</p>
+                                    <h3 style="font-size: 36px;"><a href="javascript:setPage(5)">大林．My Darlin</a></h3>
                                     <ol>
-                                    <li><a href="javascript:setPage(6)">����֪����</a></li>
-                                    <li><a href="javascript:setPage(7)">�������[�փ�</a></li>
+                                    <li><a href="javascript:setPage(6)">大林知多少</a></li>
+                                    <li><a href="javascript:setPage(7)">慢城旅遊手冊</a></li>
                                     </ol>
 									<br><br>
-                                    <h3 style="font-size: 36px;"><a href="javascript:setPage(8)">�W����͸͸</a></h3>
+                                    <h3 style="font-size: 36px;"><a href="javascript:setPage(8)">網美走透透</a></h3>
                                     <ol>
-                                    <li><a href="javascript:setPage(11)">�ɞ����Ȼ��С����-���A���B�@�^</a></li>
-                                    <li><a href="javascript:setPage(13)">�w���˾�C�Ŀ��-����С��ِ܇��</a></li>
-									<li><a href="javascript:setPage(15)">�����ڽ�ˇ�g֮��-�����ёc�U��</a></li>
-									<li><a href="javascript:setPage(17)">��ϵ���ĺ�ȥ̎-����܇վվ�L����</a></li>
-									<li><a href="javascript:setPage(18)">����vʷ�r������-�f����Ժ</a></li>
-									<li><a href="javascript:setPage(21)">�����ڵ�����-63���@</a></li>
-									<li><a href="javascript:setPage(22)">���Ͳ��L؛��-ʰ��Ժ�Ą�ˇ�g�@�^</a></li>
-									<li><a href="javascript:setPage(25)">ˇ�g�쾰¶�I�^-�����ǏS���f�@�^</a></li>
-									<li><a href="javascript:setPage(27)">���ֶY�؎�-�ϗ�����^�⹤�S</a></li>
-									<li><a href="javascript:setPage(28)">�γ���������-�����ݽz�Ǳ������@�^</a></li>
+                                    <li><a href="javascript:setPage(11)">成為大自然的小妖精-明華生態園區</a></li>
+                                    <li><a href="javascript:setPage(13)">體驗老司機的快感-大林小型賽車場</a></li>
+									<li><a href="javascript:setPage(15)">沉浸宗教藝術之美-大林昭慶禪寺</a></li>
+									<li><a href="javascript:setPage(17)">日系美拍好去處-大林車站站長宿舍</a></li>
+									<li><a href="javascript:setPage(18)">走入歷史時光隧道-萬國戲院</a></li>
+									<li><a href="javascript:setPage(21)">融入在地生活-63公園</a></li>
+									<li><a href="javascript:setPage(22)">大型彩繪貨櫃-拾粹院文創藝術園區</a></li>
+									<li><a href="javascript:setPage(25)">藝術造景露營區-大林糖廠休閒園區</a></li>
+									<li><a href="javascript:setPage(27)">伴手禮必帶-老楊方城市觀光工廠</a></li>
+									<li><a href="javascript:setPage(28)">偽出國正夯！-佐登妮絲城堡生技園區</a></li>
                                     </ol>  
                                 </div>                             
                           </div> 
@@ -284,20 +284,20 @@
                            
                                 <!-- description for page --> 
                                 <div class="fb7-page-book">
-                                    <h3 style="font-size: 36px;"><a href="javascript:setPage(29)">Ʒζ������</a></h3>
+                                    <h3 style="font-size: 36px;"><a href="javascript:setPage(29)">品味．大林</a></h3>
                                     <ol>
-                                    <li><a href="javascript:setPage(30)">�W�������-��ܽ��ʳ</a></li>
-                                    <li><a href="javascript:setPage(33)">ƽ�rСȸ��-��݆܇̼����˾</a></li>
-									<li><a href="javascript:setPage(36)">�������x��-�̼������</a></li>
-									<li><a href="javascript:setPage(39)">���x�س��u���-ԭ����»��u���</a></li>
-									<li><a href="javascript:setPage(42)">�ű��������T��-���ֻ�܇վǰ������</a></li>
-									<li><a href="javascript:setPage(45)">�ĳ�����ζ��-�Aʯ�����</a></li>
+                                    <li><a href="javascript:setPage(30)">網美早午餐-樂芙晨食</a></li>
+                                    <li><a href="javascript:setPage(33)">平價小雀幸-三輪車碳烤吐司</a></li>
+									<li><a href="javascript:setPage(36)">健康新選擇-禾家早午餐</a></li>
+									<li><a href="javascript:setPage(39)">嘉義必吃雞肉飯-原天橋下火雞肉飯</a></li>
+									<li><a href="javascript:setPage(42)">排爆！超熱門！-大林火車站前臭豆腐</a></li>
+									<li><a href="javascript:setPage(45)">蹦出新滋味？-圓石優格飲</a></li>
                                     </ol>
 									<br><br>
-									<h3 style="font-size: 36px;"><a href="javascript:setPage(48)">���</a></h3>
+									<h3 style="font-size: 36px;"><a href="javascript:setPage(48)">附錄</a></h3>
                                     <ol>
-                                    <li><a href="javascript:setPage(49)">Ӱ�􌣅^</a></li>
-									<li><a href="javascript:setPage(50)">���P�YӍ</a></li>
+                                    <li><a href="javascript:setPage(49)">影音專區</a></li>
+									<li><a href="javascript:setPage(50)">相關資訊</a></li>
                                     </ol>         
                                 </div>    
                           </div> 
@@ -313,7 +313,7 @@
                            
                                 <!-- description for page --> 
                                 <div class="fb7-page-book">
-									<p style="font-size: 56px; padding-top: 50%;">����<br>My Darlin</p>
+									<p style="font-size: 56px; padding-top: 50%;">大林<br>My Darlin</p>
                                 </div> 
 								
 								<!-- begin number page  -->                
@@ -338,14 +338,14 @@
                            
                                 <!-- description for page --> 
                                 <div class="fb7-page-book">
-									<h3 style="font-size: 36px; transform: rotate(-10deg);">����֪����</h3>
+									<h3 style="font-size: 36px; transform: rotate(-10deg);">大林知多少</h3>
 									<div style="width:50%; height: auto; margin-top: 10%; background:rgba(211,177,125,0.5); border-radius:20px;">
-									<h1 style="padding-top: 10; text-align:center; color: black;"><b>�vʷ</b></h1>
-									<p style="padding: 0 20 20; font-size: 22; color: black;">������f���顸�����֡����������֡����˵���֮�Ɂ��ЃɷN�f����һ�N�f���Sָ�������_�������˞�V���ɭ�ֵ؎������д˷Q����һ�N�f���������˵��Ё��Գ��ݸ�����֮�ֵص�<br>���񣬶��д˷Q<br>������ŸĞ�<br>�����֡���</p>
+									<h1 style="padding-top: 10; text-align:center; color: black;"><b>歷史</b></h1>
+									<p style="padding: 0 20 20; font-size: 22; color: black;">大林鎮舊名為「大莆林」、「大埔林」，此地名之由來有兩種說法，一種說法係指本地在開墾初期乃為廣大的森林地帶，故有此稱；另一種說法為往昔此地有來自潮州府大埔之林地的<br>移民，而有此稱<br>。後來才改為<br>『大林』。</p>
 									</div>
 									<div style="position: absolute; width:43%; height: auto; top: 13%; left: 57%; background:rgba(211,177,125,0.5); border-radius:20px;">
-									<h1 style="padding-top: 10; text-align:center; color: black;"><b>���ַ�λ</b></h1>
-									<p style="padding: 0 16; font-size: 22; color: black;">�����λ��_�����x�h��������e�s64ƽ�����<br>�Ͻ������l������Ϫ���l���|��÷ɽ�l��������ֿh�����l������悡��ſ��l������x�h�����T�������ġ�</p>
+									<h1 style="padding-top: 10; text-align:center; color: black;"><b>大林方位</b></h1>
+									<p style="padding: 0 16; font-size: 22; color: black;">大林鎮位於臺灣嘉義縣北部，面積約64平方公里。<br>南接民雄鄉，西鄰溪口鄉，東鄰梅山鄉，北鄰雲林縣大埤鄉、斗南鎮、古坑鄉。為嘉義縣北方門戶及中心。</p>
 									</div>
 									<img src="images/Dalin.jpg" style="position: absolute; top: 61%; left: 57%; width: 43%; height: 16%;">
 									<img src="images/snails.png" style="position: absolute; top: 54%; left: 33%; width: 30%; height: 20%;">
@@ -373,8 +373,8 @@
                            
                                 <!-- description for page --> 
                                 <div class="fb7-page-book">
-									<h3 style="font-size: 36px;">�������[�փ�</h3>
-                                    <iframe src="�������[�փ�.pdf" height="100%" width="100%"></iframe>
+									<h3 style="font-size: 36px;">慢城旅遊手冊</h3>
+                                    <iframe src="https://nextws.cyhg.gov.tw/Download.ashx?u=LzAwMS9VcGxvYWQvMTQ1Ni9yZWxmaWxlLzEzOTE1LzQ0NjQvNThhMjZiZTUtNWY5MC00OGQ4LWJlZTMtM2MyMDAzZTlmYTNmLnBkZg%3d%3d&n=5oWi5Z%2bO5peF6YGK5omL5YaKLnBkZg%3d%3d" height="100%" width="100%"></iframe>
                                 </div> 
 								
 								<!-- begin number page  -->                
@@ -397,7 +397,7 @@
                            
                                 <!-- description for page --> 
                                 <div class="fb7-page-book">
-									<p style="font-size: 56px; padding-top: 50%;"><br>�W����͸͸</p>
+									<p style="font-size: 56px; padding-top: 50%;"><br>網美走透透</p>
                                 </div> 
 								
 								<!-- begin number page  -->                
@@ -431,7 +431,7 @@
 					<!-- END PAGE 9 -->
 					
 					<!-- BEGIN PAGE 10 --> 
-					<div style="background-image:url(images/���A.png)">
+					<div style="background-image:url(images/明華.png)">
                            
                          <!-- begin container page book --> 
                          <div class="fb7-cont-page-book">
@@ -457,7 +457,7 @@
                            
                                 <!-- description for page --> 
                                 <div class="fb7-page-book">
-									<iframe src="�W����͸͸/���A/���A���B�@�^1.html" height="100%" width="100%"></iframe>
+									<iframe src="網美走透透/明華/明華生態園區1.html" height="100%" width="100%"></iframe>
                                 </div> 
 								
 								<!-- begin number page  -->                
@@ -500,7 +500,7 @@
                            
                                 <!-- description for page --> 
                                 <div class="fb7-page-book">
-									<iframe src="�W����͸͸/ِ܇��/����ِ܇��.html" height="100%" width="100%"></iframe>
+									<iframe src="網美走透透/賽車場/大林賽車場.html" height="100%" width="100%"></iframe>
                                 </div> 
 								
 								<!-- begin number page  -->                
@@ -517,7 +517,7 @@
 					<!-- END PAGE 13 -->
 					
 					<!-- BEGIN PAGE 14 --> 
-					<div style="background-image:url(images/��.png)">
+					<div style="background-image:url(images/寺.png)">
                            
                          <!-- begin container page book --> 
                          <div class="fb7-cont-page-book">
@@ -543,7 +543,7 @@
                            
                                 <!-- description for page --> 
                                 <div class="fb7-page-book">
-									<iframe src="�W����͸͸/�����ёc�U��/�����ёc�U��.html" height="100%" width="100%"></iframe>
+									<iframe src="網美走透透/大林昭慶禪寺/大林昭慶禪寺.html" height="100%" width="100%"></iframe>
                                 </div> 
 								
 								<!-- begin number page  -->                
@@ -586,7 +586,7 @@
                            
                                 <!-- description for page --> 
                                 <div class="fb7-page-book">
-									<iframe src="�W����͸͸/վ�L/վ�L.html" height="100%" width="100%"></iframe>
+									<iframe src="網美走透透/站長/站長.html" height="100%" width="100%"></iframe>
                                 </div> 
 								
 								<!-- begin number page  -->                
@@ -610,7 +610,7 @@
                            
                                 <!-- description for page --> 
                                 <div class="fb7-page-book">
-									<iframe src="�W����͸͸/�f��/�f��.html" height="100%" width="100%"></iframe>
+									<iframe src="網美走透透/萬國/萬國.html" height="100%" width="100%"></iframe>
                                 </div> 
 								
 								<!-- begin number page  -->                
@@ -634,7 +634,7 @@
                            
                                 <!-- description for page --> 
                                 <div class="fb7-page-book">
-									<img src="images/�f��.png" style="position:absolute; width:100%; height:90%; top:5%;">
+									<img src="images/萬國.png" style="position:absolute; width:100%; height:90%; top:5%;">
                                 </div> 
 								
 								<!-- begin number page  -->                
@@ -658,7 +658,7 @@
                            
                                 <!-- description for page --> 
                                 <div class="fb7-page-book">
-									<h1 class="plank">�����ڵ�����-63���@</h1>
+									<h1 class="plank">融入在地生活-63公園</h1>
 									<img src="images/63.png" class="CImg">
                                 </div> 
 								
@@ -682,7 +682,7 @@
                          <div class="fb7-cont-page-book">
 								<!-- description for page --> 
                                 <div class="fb7-page-book">
-									<iframe src="�W����͸͸/63/63.html" height="100%" width="100%"></iframe>
+									<iframe src="網美走透透/63/63.html" height="100%" width="100%"></iframe>
                                 </div> 
 							
 								<!-- begin number page  -->                
@@ -706,7 +706,7 @@
                            
                                 <!-- description for page --> 
                                 <div class="fb7-page-book">
-									<iframe src="�W����͸͸/ˇ�g�@�^/ˇ�g.html" height="100%" width="100%"></iframe>
+									<iframe src="網美走透透/藝術園區/藝術.html" height="100%" width="100%"></iframe>
                                 </div> 
 								
 								<!-- begin number page  -->                
@@ -730,7 +730,7 @@
                            
                                 <!-- description for page --> 
                                 <div class="fb7-page-book">
-									<img src="images/ˇ�g.png" style="position:absolute; width:100%; height:90%; top:5%;">
+									<img src="images/藝術.png" style="position:absolute; width:100%; height:90%; top:5%;">
                                 </div> 
 								
 								<!-- begin number page  -->                
@@ -747,7 +747,7 @@
 					<!-- END PAGE 23 -->
 					
 					<!-- BEGIN PAGE 24 --> 
-					<div style="background-image:url(images/�Ƿ���.png)">
+					<div style="background-image:url(images/糖封面.png)">
                            
                          <!-- begin container page book --> 
                          <div class="fb7-cont-page-book">
@@ -772,7 +772,7 @@
 						 
 								<!-- description for page --> 
                                 <div class="fb7-page-book">
-									<iframe src="�W����͸͸/�ǏS/page1.html" height="100%" width="100%"></iframe>
+									<iframe src="網美走透透/糖廠/page1.html" height="100%" width="100%"></iframe>
                                 </div> 
 								
 								<!-- begin number page  -->                
@@ -789,7 +789,7 @@
 					<!-- END PAGE 25 -->
 					
 					<!-- BEGIN PAGE 26 --> 
-					<div style="background-image:url(images/���K�ַ���.png)">
+					<div style="background-image:url(images/方塊酥封面.png)">
                            
                          <!-- begin container page book --> 
                          <div class="fb7-cont-page-book">
@@ -814,7 +814,7 @@
 
 								<!-- description for page --> 
                                 <div class="fb7-page-book">
-									<iframe src="�W����͸͸/�ϗ�/page2.html" height="100%" width="100%"></iframe>
+									<iframe src="網美走透透/老楊/page2.html" height="100%" width="100%"></iframe>
                                 </div> 
 								
 								<!-- begin number page  -->                
@@ -838,7 +838,7 @@
                            
 								<!-- description for page --> 
                                 <div class="fb7-page-book">
-									<iframe src="�W����͸͸/�����ݽz�Ǳ�/page1.html" height="100%" width="100%"></iframe>
+									<iframe src="網美走透透/佐登妮絲城堡/page1.html" height="100%" width="100%"></iframe>
                                 </div> 
 								
 								<!-- begin number page  -->                
@@ -862,7 +862,7 @@
                            
                                 <!-- description for page --> 
                                 <div class="fb7-page-book">
-									<p style="font-size: 56px; padding-top: 50%;"><br>Ʒζ������</p>
+									<p style="font-size: 56px; padding-top: 50%;"><br>品味．大林</p>
                                 </div> 
 								
 								<!-- begin number page  -->                
@@ -907,18 +907,18 @@
                                 <div class="fb7-page-book">
 									<hr noshade align=center width=640 size="2" color="#C48888">
 									<p style="text-align: center; margin: 0;">
-										<font size=5 face="΢ܛ�����w" color="#613030"><b>��ҽ�B</b></font><br>
+										<font size=5 face="微軟正黑體" color="#613030"><b>店家介紹</b></font><br>
 									</p>
 										<hr noshade align=center width=640 size="2" color="#C48888">
 										<table align=center>
 											<tr align=left style="line-height:200%">
-												<td><font size=4 face="΢ܛ�����w" color="#613030" style="line-height:250%;">&emsp;&emsp;��ܽ��ʳλ�ƽ�ͽ��ϣ����x��܇վ���h��ͽ���s�������犼��ɵ��_�����Ǯ���С�����������͵ꡣ���˃r�񌍻ݣ����Ҳ�������r�Ƴ������ײͣ�ʹ����~��r��������ܵ���ζ�Ĳ��c������ܽ��ʳ������ɫ�鸻���|���Ҿ߾W���L����b���OӋ���ǳ��m�����մ򿨣������w�òͭh��Ҳ�ஔǬ�Q��������׌��ܸ����m���ڵ���ò͡�</font></td>
+												<td><font size=4 face="微軟正黑體" color="#613030" style="line-height:250%;">&emsp;&emsp;樂芙晨食位於平和街上，距離火車站不遠，徒步約三至五分鐘即可抵達，算是當地小有名氣的早午餐店。除了價格實惠，店家也會不定時推出優惠套餐，使顧客以銅板價格就能享受到美味的餐點，而樂芙晨食最大的特色為富有質感且具網美風格的裝潢設計，非常適合拍照打卡，且整體用餐環境也相當乾淨、明亮，讓顧客能更舒適的在店內用餐。</font></td>
 											</tr>
 											<tr>
-												<td><font size=4 face="΢ܛ�����w" color="#613030" style="line-height:250%;">&emsp;&emsp;�c�͕r��T���ՑB���H�У����Ͳ��ٶ�Ҳ��죬���������x��Ĳ��c��ɳ��ţ�ŵ��h���cһ�����{��ɳ��ţ�ż��ǡ����̎����������˽o��Ҳ�����R���������h���������ǳ���ζ�Ҳ����X��ā�����{�Ĳ��քt�ǿڸд����Ҝغ͡�</font></td>
+												<td><font size=4 face="微軟正黑體" color="#613030" style="line-height:250%;">&emsp;&emsp;點餐時店員服務態度親切，且送餐速度也算快，而當天所選擇的餐點為沙朗牛排蛋漢堡與一杯豆漿。沙朗牛排煎得恰到好處，且因為生菜給得也毫不馬虎，整個漢堡吃起來非常美味且不會覺得膩，豆漿的部分則是口感醇厚且溫和。</font></td>
 											</tr>
 											<tr>
-												<td><font size=4 face="΢ܛ�����w" color="#613030" style="line-height:250%;">&emsp;&emsp;���w���f����ܽ��ʳ���cCPֵ�ߣ��ҵ�ȾW���L����b���OӋ��Ҳ�ஔ�m�������c�򿨣��������֕r��������ĳԂ�����ͣ����ǲ��e���x��֮һ��</font></td>
+												<td><font size=4 face="微軟正黑體" color="#613030" style="line-height:250%;">&emsp;&emsp;整體來說，樂芙晨食餐點CP值高，且店內網美風格的裝潢設計，也相當適合拍照與打卡，來到大林時若想舒服的吃個早午餐，算是不錯的選擇之一。</font></td>
 											</tr>
 										</table>
 										<br><br><br><br><br>
@@ -949,42 +949,42 @@
                                 <div class="fb7-page-book">
 									<hr noshade align=center width=640 size="2" color="#C48888">
 									<p style="text-align: center; margin: 0;">
-										<font size=5 face="΢ܛ�����w" color="#613030"><b>����YӍ</b></font><br>
+										<font size=5 face="微軟正黑體" color="#613030"><b>店家資訊</b></font><br>
 									</p>
 										<hr noshade align=center width=640 size="2" color="#C48888">
 										<table align=center>
 											<tr align=left style="line-height:200%">
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;"><b>��ַ��</b>���x�h�����ƽ�ͽ�47-1̖</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;"><b>地址：</b>嘉義縣大林鎮平和街47-1號</font></td>
 											</tr>
 											<tr>
-												<P></P><td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;"><b>�Ԓ��</b>05-265-2800</font></td>
+												<P></P><td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;"><b>電話：</b>05-265-2800</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;"><b>�I�I�r�g��</b>����һ 05:30 �C 13:00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;"><b>營業時間：</b>星期一 05:30 – 13:00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w"  color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;���ڶ� 05:30 �C 13:00</font></td>
+												<td><font size=3 face="微軟正黑體"  color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期二 05:30 – 13:00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 05:30 �C 13:00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期三 05:30 – 13:00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 05:30 �C 13:00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期四 05:30 – 13:00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 05:30 �C 13:00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期五 05:30 – 13:00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 05:30 �C 13:00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期六 05:30 – 13:00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 05:30 �C 13:00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期日 05:30 – 13:00</font></td>
 											</tr>
 										</table>
 										<hr noshade align=justify width=640 size="2" color="#C48888">
 									</font>
 									<p style="text-align: center; margin: 0;">
-										<font size=5 face="΢ܛ�����w" color="#613030"><b>�̼ҵ؈D</b></font><br>
+										<font size=5 face="微軟正黑體" color="#613030"><b>商家地圖</b></font><br>
 									</p>
 									<hr noshade align=center width=640 size="2" color="#C48888"><br>
 									<p style="text-align: center; margin: 0;">
@@ -1034,18 +1034,18 @@
                                 <div class="fb7-page-book">
 									<hr noshade align=center width=640 size="2" color="#C48888">
 									<p style="text-align:center; margin: 0;">
-										<font size=5 face="΢ܛ�����w" color="#613030"><b>��ҽ�B</b></font><br>
+										<font size=5 face="微軟正黑體" color="#613030"><b>店家介紹</b></font><br>
 									</p>
 										<hr noshade align=center width=640 size="2" color="#C48888">
 										<table align=center>
 											<tr align=left style="line-height:200%">
-												<td><font size=4 face="΢ܛ�����w" color="#613030" style="line-height:250%;">&emsp;&emsp;��݆܇̼����˾��һ̨СС�Ĕ�܇���l�����������u�ܵ���ҵĿ϶��c���u����������Լ��ĵ��档��؜�۵Ĳ��c��ֻ��������ġ�̼����˾����߀�п����౤����Ƥ�h��������cƴ�P�ȣ������f���ஔ���ӣ������w�r���ρ��fҲ�ஔ�H��CPֵ�ܸߡ�</font></td>
+												<td><font size=4 face="微軟正黑體" color="#613030" style="line-height:250%;">&emsp;&emsp;三輪車碳烤土司從一台小小的攤車出發，後來生意逐漸受到大家的肯定與好評，因此有了自己的店面。所販售的餐點不只有其主打的「碳烤吐司」，還有烤餅、大亨堡、脆皮漢堡、蛋餅與拼盤等，可以說是相當多樣，且整體價格上來說也相當親民，CP值很高。</font></td>
 											</tr>
 											<tr>
-												<td><font size=4 face="΢ܛ�����w" color="#613030" style="line-height:250%;">&emsp;&emsp;���λ�ò��࣬��Ǭ�Q����������雺��N��͡����ՑB���H�С��������x��Ĳ��c��쳴������̼����˾�c�p�ӝ���˾���ǰ���϶����ڡ��������㣬������Ҳ��ˬ����ā�������؄e���Ƥ�ڸ��c��������˾��⣬�����˸е��ஔ�@�G��</font></td>
+												<td><font size=4 face="微軟正黑體" color="#613030" style="line-height:250%;">&emsp;&emsp;店內位置不多，但乾淨明亮，且老闆很貼近顧客、服務態度親切。當天所選擇的餐點為快炒櫻桃鴨碳烤土司與雙層濃起司蛋餅，前者料多實在、份量充足，吃起來也清爽不油膩；後者特別的餅皮口感與濃郁的起司香氣，更令人感到相當驚艷。</font></td>
 											</tr>
 											<tr>
-												<td><font size=4 face="΢ܛ�����w" color="#613030" style="line-height:250%;">&emsp;&emsp;���Y���ԣ���݆܇̼����˾�����r���H��ʳ�����r����������ȃ��c����˷ǳ����]��ҁ��L���֕r�����ԁ�Lԇ������ȶ��ӻ��Ĳ��c��</font></td>
+												<td><font size=4 face="微軟正黑體" color="#613030" style="line-height:250%;">&emsp;&emsp;總結而言，三輪車碳烤土司有著價格親民、食材新鮮、分量充足等優點，因此非常推薦大家來訪大林時，可以來嘗試看看店內多樣化的餐點。</font></td>
 											</tr>
 										</table>
 										<br><br><br><br><br><br><br>
@@ -1075,42 +1075,42 @@
                                 <div class="fb7-page-book">
 									<hr noshade align=center width=640 size="2" color="#C48888">
 									<p style="text-align:center; margin: 0;">
-										<font size=5 face="΢ܛ�����w" color="#613030"><b>����YӍ</b></font><br>
+										<font size=5 face="微軟正黑體" color="#613030"><b>店家資訊</b></font><br>
 									</p>
 										<hr noshade align=center width=640 size="2" color="#C48888">
 										<table align=center>
 											<tr align=left style="line-height:200%">
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;"><b>��ַ��</b>���x�h��������d·55̖</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;"><b>地址：</b>嘉義縣大林鎮中興路55號</font></td>
 											</tr>
 											<tr>
-												<P></P><td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;"><b>�Ԓ��</b>0903-654-580</font></td>
+												<P></P><td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;"><b>電話：</b>0903-654-580</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;"><b>�I�I�r�g��</b>����һ 06:00 �C 13:00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;"><b>營業時間：</b>星期一 06:00 – 13:00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w"  color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;���ڶ� 06:00 �C 13:00</font></td>
+												<td><font size=3 face="微軟正黑體"  color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期二 06:00 – 13:00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 06:00 �C 13:00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期三 06:00 – 13:00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 06:00 �C 13:00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期四 06:00 – 13:00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 06:00 �C 13:00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期五 06:00 – 13:00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 06:00 �C 13:00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期六 06:00 – 13:00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 06:00 �C 13:00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期日 06:00 – 13:00</font></td>
 											</tr>
 										</table>
 										<hr noshade align=justify width=640 size="2" color="#C48888">
 									</font>
 									<p style="text-align:center; margin: 0;">
-										<font size=5 face="΢ܛ�����w" color="#613030"><b>�̼ҵ؈D</b></font><br>
+										<font size=5 face="微軟正黑體" color="#613030"><b>商家地圖</b></font><br>
 									</p>
 									<hr noshade align=center width=640 size="2" color="#C48888"><br>
 									<p style="text-align:center; margin: 0;">
@@ -1160,18 +1160,18 @@
                                 <div class="fb7-page-book">
 									<hr noshade align=center width=640 size="2" color="#C48888">
 									<p style="text-align:center; margin: 0;">
-										<font size=5 face="΢ܛ�����w" color="#613030"><b>��ҽ�B</b></font><br>
+										<font size=5 face="微軟正黑體" color="#613030"><b>店家介紹</b></font><br>
 									</p>
 										<hr noshade align=center width=640 size="2" color="#C48888">
 										<table align=center>
 											<tr align=left style="line-height:200%">
-												<td><font size=4 face="΢ܛ�����w" color="#613030" style="line-height:250%;">&emsp;&emsp;�̼������λ����d���ϣ���ǰ����Ǵ����w���\�ӹ��@��ͣ܇�ǳ����㡣�Ȳ����g��λ���㣬���b��÷ǳ���ܰ�Լ��H�����ƣ��Ќ��T�oС���ќʂ�ă�ͯ�κ̓�ͯ�;ߡ����̼������������ɫ���������pӯ���ײ�ƴ�P���ײ��ṩ������ˮ���߲ˡ�����ˮ���c�����ஔ�S���ҽ�����</font></td>
+												<td><font size=4 face="微軟正黑體" color="#613030" style="line-height:250%;">&emsp;&emsp;禾家早午餐位於新興街上，店前面就是大林體育運動公園，停車非常方便。內部空間座位充足，且裝潢得非常溫馨以及親子友善，有專門給小朋友準備的兒童椅和兒童餐具。而禾家早午餐最大的特色為他們的輕盈窈窕套餐拼盤，套餐提供大量的水耕蔬菜、當季水果與優格，相當豐富且健康。</font></td>
 											</tr>
 											<tr>
-												<td><font size=4 face="΢ܛ�����w" color="#613030" style="line-height:250%;">&emsp;&emsp;�҂�����ȵăɷN�ײͽM��--�pӯ���c��ʳ���x�����c��Lԇ���������pӯ��ƴ�P���f��ˮ���߲˺ͮ���ˮ���L�������ǳ����r������ĿڸН������d���ֲ�ʧ��ˬ������ʳ���xƴ�P�t�ṩ����ը�u����l�͵�ʽ���c�������ǳ���ʹ�҂��Ե÷ǳ��M�㡣</font></td>
+												<td><font size=4 face="微軟正黑體" color="#613030" style="line-height:250%;">&emsp;&emsp;我們將店內的兩種套餐組合--輕盈窈窕與肉食主義，都點來嘗試看看，以輕盈窈窕拼盤來說，水耕蔬菜和當季水果嘗起來都非常新鮮，優格的口感濃郁、綿密又不失清爽；而肉食主義拼盤則提供卡拉炸雞、薯條和德式香腸，分量非常大，使我們吃得非常滿足。</font></td>
 											</tr>
 											<tr>
-												<td><font size=4 face="΢ܛ�����w" color="#613030" style="line-height:250%;">&emsp;&emsp;�̼�����;���ͣ܇���㡢�H�����ƿ��g�����c����������˻����Ѿ۲͵�һ�����x�񣬶�Ҳ���λ��\�ӹ��@���棬�ҵ���ṩ������ɫ���pӯ���ײ�ƴ�P���ǳ��m�τ��\����Ľ����ۺ��ߣ�ʹ���ܼ��r�Ҿ�����a��I�B��</font></td>
+												<td><font size=4 face="微軟正黑體" color="#613030" style="line-height:250%;">&emsp;&emsp;禾家早午餐具有停車方便、親子友善空間的特點，可作為家人或朋友聚餐的一個好選擇，而也因為位於運動公園對面，且店內提供富有特色的輕盈窈窕套餐拼盤，非常適合剛運動完的健康愛好者，使其能即時且均衡地補充營養。</font></td>
 											</tr>
 										</table>
 										<br><br><br>
@@ -1201,42 +1201,42 @@
                                 <div class="fb7-page-book">
 									<hr noshade align=center width=640 size="2" color="#C48888">
 									<p style="text-align:center; margin: 0;">
-										<font size=5 face="΢ܛ�����w" color="#613030"><b>����YӍ</b></font><br>
+										<font size=5 face="微軟正黑體" color="#613030"><b>店家資訊</b></font><br>
 									</p>
 										<hr noshade align=center width=640 size="2" color="#C48888">
 										<table align=center>
 											<tr align=left style="line-height:200%">
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;"><b>��ַ��</b>���x�h��������d��147̖</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;"><b>地址：</b>嘉義縣大林鎮新興街147號</font></td>
 											</tr>
 											<tr>
-												<P></P><td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;"><b>�Ԓ��</b>05-265-0598</font></td>
+												<P></P><td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;"><b>電話：</b>05-265-0598</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;"><b>�I�I�r�g��</b>����һ 06:00 �C 13:00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;"><b>營業時間：</b>星期一 06:00 – 13:00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;���ڶ� 06:00 �C 13:00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期二 06:00 – 13:00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ ��Ϣ</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期三 休息</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 06:00 �C 13:00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期四 06:00 – 13:00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 06:00 �C 13:00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期五 06:00 – 13:00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 06:00 �C 13:00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期六 06:00 – 13:00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 06:00 �C 13:00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期日 06:00 – 13:00</font></td>
 											</tr>
 										</table>
 										<hr noshade align=justify width=640 size="2" color="#C48888">
 									</font>
 									<p style="text-align:center; margin: 0;">
-										<font size=5 face="΢ܛ�����w" color="#613030"><b>�̼ҵ؈D</b></font><br>
+										<font size=5 face="微軟正黑體" color="#613030"><b>商家地圖</b></font><br>
 									</p>
 									<hr noshade align=center width=640 size="2" color="#C48888"><br>
 									<p style="text-align:center; margin: 0;">
@@ -1292,18 +1292,18 @@
                                 <div class="fb7-page-book">
 									<hr noshade align=center width=640 size="2" color="#C48888">
 									<p style="text-align:center; margin: 0;">
-										<font size=5 face="΢ܛ�����w" color="#613030"><b>��ҽ�B</b></font><br>
+										<font size=5 face="微軟正黑體" color="#613030"><b>店家介紹</b></font><br>
 									</p>
 										<hr noshade align=center width=640 size="2" color="#C48888">
 										<table align=center>
 											<tr align=left style="line-height:200%">
-												<td><font size=4 face="΢ܛ�����w" color="#613030" style="line-height:250%;">&emsp;&emsp;ԭ����»��u������Ǵ��ַǳ�֪���ĵ��֮һ������������������� I�I������ǰ�����Fַ���r���϶��ԣ��ȼ��x�еı�����u���߀����Щ���ҳ��˻����������⣬Ҳ�ṩ�S����Ԫ�����׌��x��</font></td>
+												<td><font size=4 face="微軟正黑體" color="#613030" style="line-height:250%;">&emsp;&emsp;原天橋下火雞肉飯算是大林非常知名的店家之一，本來是在外面的天橋下營業，多年前搬至現址。價格上而言，比嘉義市的眾多火雞肉飯還便宜些，且除了基本的飯類以外，也提供豐富多元的配菜讓顧客選擇。</font></td>
 											</tr>
 											<tr>
-												<td><font size=4 face="΢ܛ�����w" color="#613030" style="line-height:250%;">&emsp;&emsp;�����҂��c�˵�����ƵĻ��u����c�u������u��z���ֹ��F�������������|�r�ۺ���혣������ϵ���֭Ҳ�ஔ�r������������w���f�����^���ā���������˸е��@�G��</font></td>
+												<td><font size=4 face="微軟正黑體" color="#613030" style="line-height:250%;">&emsp;&emsp;當天我們點了店內招牌的火雞肉飯與雞魯飯，其雞肉絲為手工現剝，吃起來肉質鮮嫩和柔順，而淋上的肉汁也相當鮮美和下飯，且整體來說不會過於油膩，著實令人感到驚艷。</font></td>
 											</tr>
 											<tr>
-												<td><font size=4 face="΢ܛ�����w" color="#613030" style="line-height:250%;">&emsp;&emsp;ԭ����»��u��r���F����ζ���أ��Ҿ�λ춴��ֻ�܇վ�������ǳ��m�������[�͂������͵��x�����������f�Ǽ��x�سԵĻ��u���֮һ��</font></td>
+												<td><font size=4 face="微軟正黑體" color="#613030" style="line-height:250%;">&emsp;&emsp;原天橋下火雞肉飯價格不貴、口味獨特，且就位於大林火車站附近，非常適合作為遊客們午晚餐的選擇，甚至可以說是嘉義必吃的火雞肉飯之一。</font></td>
 											</tr>
 										</table>
 										<br><br><br><br><br><br><br><br><br><br><br><br>
@@ -1333,42 +1333,42 @@
                                 <div class="fb7-page-book">
 									<hr noshade align=center width=640 size="2" color="#C48888">
 									<p style="text-align:center; margin: 0;">
-										<font size=5 face="΢ܛ�����w" color="#613030"><b>����YӍ</b></font><br>
+										<font size=5 face="微軟正黑體" color="#613030"><b>店家資訊</b></font><br>
 									</p>
 										<hr noshade align=center width=640 size="2" color="#C48888">
 										<table align=center>
 											<tr align=left style="line-height:200%">
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;"><b>��ַ��</b>���x�h�������ɽ·37̖</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;"><b>地址：</b>嘉義縣大林鎮中山路37號</font></td>
 											</tr>
 											<tr>
-												<P></P><td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;"><b>�Ԓ��</b>05-265-6460</font></td>
+												<P></P><td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;"><b>電話：</b>05-265-6460</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;"><b>�I�I�r�g��</b>����һ 11��00 �C 19��00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;"><b>營業時間：</b>星期一 11：00 – 19：00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w"  color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;���ڶ� 11��00 �C 19��00</font></td>
+												<td><font size=3 face="微軟正黑體"  color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期二 11：00 – 19：00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 11��00 �C 19��00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期三 11：00 – 19：00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 11��00 �C 19��00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期四 11：00 – 19：00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 11��00 �C 19��00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期五 11：00 – 19：00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 11��00 �C 19��00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期六 11：00 – 19：00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 11��00 �C 19��00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期日 11：00 – 19：00</font></td>
 											</tr>
 										</table>
 										<hr noshade align=justify width=640 size="2" color="#C48888">
 									</font>
 									<p style="text-align:center; margin: 0;">
-										<font size=5 face="΢ܛ�����w" color="#613030"><b>�̼ҵ؈D</b></font><br>
+										<font size=5 face="微軟正黑體" color="#613030"><b>商家地圖</b></font><br>
 									</p>
 									<hr noshade align=center width=640 size="2" color="#C48888"><br>
 									<p style="text-align:center; margin: 0;">
@@ -1418,16 +1418,16 @@
                                 <div class="fb7-page-book">
 									<hr noshade align=center width=640 size="2" color="#C48888">
 									<p style="text-align:center; margin: 0;">
-										<font size=5 face="΢ܛ�����w" color="#613030"><b>��ҽ�B</b></font><br>
+										<font size=5 face="微軟正黑體" color="#613030"><b>店家介紹</b></font><br>
 									</p>
 										<hr noshade align=center width=640 size="2" color="#C48888">
 										<table align=center>
 											<tr align=left style="line-height:200%">
-												<td><font size=4 face="΢ܛ�����w" color="#613030" style="line-height:250%;">&emsp;&emsp;���ֻ�܇վǰ�����������ǳ������Ǵ������ܚgӭ����ʳ��ң�������ƽ��߀�Ǽ��գ����ǔD�M������˳�������߀Ҫ��̖�a�ƣ��@ʾ�׺�ÿ�����L���ֵ��[�ͣ������ص؁���Ʒ�L��</font></td>
+												<td><font size=4 face="微軟正黑體" color="#613030" style="line-height:250%;">&emsp;&emsp;大林火車站前臭豆腐（臭非臭），是大林深受歡迎的美食店家，不管是平日還是假日，總是擠滿了排隊人潮，甚至還要抽號碼牌，顯示幾乎每個來訪大林的遊客，都會特地來此品嘗。</font></td>
 											</tr>
 											<tr>
-												<td><font size=4 face="΢ܛ�����w" color="#613030" style="line-height:250%;">&emsp;&emsp;��������˔�Ҳ����֮�еĶ࣬�����U��̖��죬�K�]�еȴ�̫���r�g�������ĳ��������ʮ�㣬�L������Ƥ�ִࡢ���������ڸ�ܛ�ۣ������u֭����e��һ���Lζ�����ݲ�Ҳ�����ɿ��ҽ�ā�����w���f�������ڵص���˚���ʳ��
-													���ֻ�܇վǰ�����������ǳ��������^������̓�����ǳ����]��ҁ������֕r��һ��Ҫ��L�r�������^����������е�ʧ����</font></td>
+												<td><font size=4 face="微軟正黑體" color="#613030" style="line-height:250%;">&emsp;&emsp;當天排隊人數也意料之中的多，但好險叫號算快，並沒有等待太多時間。他們的臭豆腐香氣十足，嘗起來外皮酥脆、豆腐本身口感軟嫩，吸附醬汁後更別有一番風味，而泡菜也是清脆可口且解膩。整體來說，作為在地的最強人氣美食，
+													大林火車站前臭豆腐（臭非臭），可謂是名不虛傳，非常推薦大家來到大林時，一定要來嘗鮮看看，絕對不會令你感到失望！</font></td>
 											</tr>
 										</table>
 										<br><br><br><br><br><br><br><br><br><br><br><br>
@@ -1457,42 +1457,42 @@
                                 <div class="fb7-page-book">
 									<hr noshade align=center width=640 size="2" color="#C48888">
 									<p style="text-align:center; margin: 0;">
-										<font size=5 face="΢ܛ�����w" color="#613030"><b>����YӍ</b></font><br>
+										<font size=5 face="微軟正黑體" color="#613030"><b>店家資訊</b></font><br>
 									</p>
 										<hr noshade align=center width=640 size="2" color="#C48888">
 										<table align=center>
 											<tr align=left style="line-height:200%">
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;"><b>��ַ��</b>���x�h�������ɽ·13̖</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;"><b>地址：</b>嘉義縣大林鎮中山路13號</font></td>
 											</tr>
 											<tr>
-												<P></P><td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;"><b>�Ԓ��</b>05-265-9621</font></td>
+												<P></P><td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;"><b>電話：</b>05-265-9621</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;"><b>�I�I�r�g��</b>����һ ��Ϣ</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;"><b>營業時間：</b>星期一 休息</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w"  color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;���ڶ� 12��00 �C 19��30</font></td>
+												<td><font size=3 face="微軟正黑體"  color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期二 12：00 – 19：30</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 12��00 �C 19��30</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期三 12：00 – 19：30</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 12��00 �C 19��30</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期四 12：00 – 19：30</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 12��00 �C 19��30</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期五 12：00 – 19：30</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 12��00 �C 19��30</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期六 12：00 – 19：30</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 12��00 �C 19��30</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期日 12：00 – 19：30</font></td>
 											</tr>
 										</table>
 										<hr noshade align=justify width=640 size="2" color="#C48888">
 									</font>
 									<p style="text-align:center; margin: 0;">
-										<font size=5 face="΢ܛ�����w" color="#613030"><b>�̼ҵ؈D</b></font><br>
+										<font size=5 face="微軟正黑體" color="#613030"><b>商家地圖</b></font><br>
 									</p>
 									<hr noshade align=center width=640 size="2" color="#C48888"><br>
 									<p style="text-align:center; margin: 0;">
@@ -1548,18 +1548,18 @@
                                 <div class="fb7-page-book">
 									<hr noshade align=center width=640 size="2" color="#C48888">
 									<p style="text-align:center; margin: 0;">
-										<font size=5 face="΢ܛ�����w" color="#613030"><b>��ҽ�B</b></font><br>
+										<font size=5 face="微軟正黑體" color="#613030"><b>店家介紹</b></font><br>
 									</p>
 										<hr noshade align=center width=640 size="2" color="#C48888">
 										<table align=center>
 											<tr align=left style="line-height:200%">
-												<td><font size=4 face="΢ܛ�����w" color="#613030" style="line-height:250%;">&emsp;&emsp;�Aʯ�����λ춴��ֻ�܇վǰ������б���棬����؜�۶��ӻ���ζ�ă�����������ס������c��ʽ���ӵ�ˮ���ȣ�����������ɫ��ֻҪ���M�M70Ԫ�������ڵ��ͬ�r�����ڸ����I����ʳ������[�́��f�ǳ����㡣</font></td>
+												<td><font size=4 face="微軟正黑體" color="#613030" style="line-height:250%;">&emsp;&emsp;圓石優格飲位於大林火車站前豆腐的斜對面，主打販售多樣化口味的優格飲，像是紫米、燕麥與各式各樣的水果等，而其最大的特色為只要消費滿70元，即可在店內同時享受在附近買的美食，對於遊客來說非常方便。</font></td>
 											</tr>
 											<tr>
-												<td><font size=4 face="΢ܛ�����w" color="#613030" style="line-height:250%;">&emsp;&emsp;��ȿ��g��λ���㡢�����cǬ�Q�����������Lԇ�ă����Ʒ헞�������������������ஔ혿ڣ��������ό��ڡ��Եó����������w�������ߴ��������ȷǳ���ˬ�c��ʣ�����֮�⣬�҂�߀�c��������������ڸ����փ�ܛ��Ҳ����óԡ�</font></td>
+												<td><font size=4 face="微軟正黑體" color="#613030" style="line-height:250%;">&emsp;&emsp;店內空間座位充足、明亮與乾淨，而當天所嘗試的優格飲品項為火龍果優格飲，優格飲本身相當順口，且其用料實在、吃得出火龍果的顆粒，兩者搭配起來喝非常清爽與解渴，除此之外，我們還點了他的招牌鬆餅，其口感外酥內軟，也格外好吃。</font></td>
 											</tr>
 											<tr>
-												<td><font size=4 face="΢ܛ�����w" color="#613030" style="line-height:250%;">&emsp;&emsp;����ڸ����I�˳������c���u����������Կ��]��Aʯ������cһ����ˬ����ϣ��c������ʳ�������ԣ����S����˱ĳ�����ζ���ڴ��ֵ���ʳ�����Ы@�ø���ĝM�㡣</font></td>
+												<td><font size=4 face="微軟正黑體" color="#613030" style="line-height:250%;">&emsp;&emsp;如果在附近買了臭豆腐與火雞肉飯，不妨可以考慮來圓石優格飲，點一杯清爽的飲料，與其他美食搭配著吃，或許能因此蹦出新滋味，在大林的美食饗宴中獲得更大的滿足。</font></td>
 											</tr>
 										</table>
 										<br><br><br><br><br><br><br>
@@ -1589,42 +1589,42 @@
                                 <div class="fb7-page-book">
 									<hr noshade align=center width=640 size="2" color="#C48888">
 									<p style="text-align:center; margin: 0;">
-										<font size=5 face="΢ܛ�����w" color="#613030"><b>����YӍ</b></font><br>
+										<font size=5 face="微軟正黑體" color="#613030"><b>店家資訊</b></font><br>
 									</p>
 										<hr noshade align=center width=640 size="2" color="#C48888">
 										<table align=center>
 											<tr align=left style="line-height:200%">
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;"><b>��ַ��</b>���x�h�������ɽ·14̖</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;"><b>地址：</b>嘉義縣大林鎮中山路14號</font></td>
 											</tr>
 											<tr>
-												<P></P><td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;"><b>�Ԓ��</b>05-265-8111</font></td>
+												<P></P><td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;"><b>電話：</b>05-265-8111</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;"><b>�I�I�r�g��</b>����һ 10��00 �C 21��00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;"><b>營業時間：</b>星期一 10：00 – 21：00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w"  color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;���ڶ� 10��00 �C 21��00</font></td>
+												<td><font size=3 face="微軟正黑體"  color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期二 10：00 – 21：00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 10��00 �C 21��00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期三 10：00 – 21：00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 10��00 �C 21��00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期四 10：00 – 21：00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 10��00 �C 21��00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期五 10：00 – 21：00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 10��00 �C 21��00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期六 10：00 – 21：00</font></td>
 											</tr>
 											<tr>
-												<td><font size=3 face="΢ܛ�����w" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;������ 10��00 �C 21��00</font></td>
+												<td><font size=3 face="微軟正黑體" color="#613030" style="line-height: 200%;">&emsp;&emsp;&emsp;&emsp;&emsp;星期日 10：00 – 21：00</font></td>
 											</tr>
 										</table>
 										<hr noshade align=justify width=640 size="2" color="#C48888">
 									</font>
 									<p style="text-align:center; margin: 0;">
-										<font size=5 face="΢ܛ�����w" color="#613030"><b>�̼ҵ؈D</b></font><br>
+										<font size=5 face="微軟正黑體" color="#613030"><b>商家地圖</b></font><br>
 									</p>
 									<hr noshade align=center width=640 size="2" color="#C48888"><br>
 									<p style="text-align:center; margin: 0;">
@@ -1654,7 +1654,7 @@
                            
                                 <!-- description for page --> 
                                 <div class="fb7-page-book">
-									<p style="font-size: 56px; padding-top: 50%;">���</p>
+									<p style="font-size: 56px; padding-top: 50%;">附錄</p>
                                 </div> 
 								
 								<!-- begin number page  -->                
@@ -1678,7 +1678,7 @@
                            
                                 <!-- description for page --> 
                                 <div class="fb7-page-book">
-									<h3 style="font-size: 36px;">Ӱ�􌣅^</h3>
+									<h3 style="font-size: 36px;">影音專區</h3>
 									<a href="https://www.youtube.com/watch?v=ASmo03v6XvQ" target="_blank" style="position: absolute; z-index: 999; left: 30%; top: 35%; width: 40%; height: 20%;"></a>
                                     <img src="images/videoFrame.png" style="position: absolute; width: 100%; height: 90%;">
 									<img src="images/play.png" style="position: absolute; left: 25%; top: 30%; width: 50%; height: 30%;">
@@ -1704,10 +1704,10 @@
                            
                                 <!-- description for page --> 
                                 <div class="fb7-page-book">
-									<h3 style="font-size: 36px;">���P�YӍ</h3>
-									<div class="information" style="background-image:url(images/Tag1.png)"><a href="https://dalin.cyhg.gov.tw/Default.aspx" target="_blank">����悹���</a></div>
-                                    <div class="information" style="background-image:url(images/Tag2.png)" onclick="MapChange(1)">�tԺ&�\��</div>
-									<div class="information" style="background-image:url(images/Tag3.png)" onclick="MapChange(2)">���־����</div>
+									<h3 style="font-size: 36px;">相關資訊</h3>
+									<div class="information" style="background-image:url(images/Tag1.png)"><a href="https://dalin.cyhg.gov.tw/Default.aspx" target="_blank">大林鎮公所</a></div>
+                                    <div class="information" style="background-image:url(images/Tag2.png)" onclick="MapChange(1)">醫院&診所</div>
+									<div class="information" style="background-image:url(images/Tag3.png)" onclick="MapChange(2)">大林警察局</div>
 									<iframe id="informationMap" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d6901.787004132169!2d120.45431490136511!3d23.60095770511807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z5aSn5p6X6Yar6Zmi!5e0!3m2!1szh-TW!2stw!4v1672931007045!5m2!1szh-TW!2stw" width="450" height="350" style="border:0; margin-left: 25; margin-top: 50;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 								</div> 
 								
